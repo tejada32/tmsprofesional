@@ -1,0 +1,110 @@
+// src/app.module.ts
+
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+
+// Entidades
+import { Company } from './entities/company.entity';
+import { Branch } from './entities/branch.entity';
+import { User } from './entities/user.entity';
+import { Product } from './entities/product.entity';
+import { ProductSerial } from './entities/product-serial.entity';
+import { BranchInventory } from './entities/branch-inventory.entity';
+import { Sale } from './entities/sale.entity';
+import { SaleItem } from './entities/sale-item.entity';
+import { SubscriptionPlan } from './entities/subscription-plan.entity';
+import { Currency } from './entities/currency.entity';
+import { ExchangeRate } from './entities/exchange-rate.entity';
+import { AccountTransaction } from './entities/account-transaction.entity';
+import { AccountInstallment } from './entities/account-installment.entity';
+import { Employee } from './entities/employee.entity';
+import { EmployeeCommission } from './entities/employee-commission.entity';
+import { Loan } from './entities/loan.entity';
+
+// Módulos
+import { ProductModule } from './products/product.module';
+import { CompanyModule } from './companies/company.module';
+import { UserModule } from './users/user.module';
+import { AuthModule } from './auth/auth.module';
+import { FinancialModule } from './financial/financial.module';
+import { RepairController } from './controllers/repair.controller'; // <-- Importa el controlador
+import { RepairService } from './services/repair.service'; // <-- Importa el servicio
+
+// Controladores
+import { BranchInventoryController } from './branch-inventory.controller';
+import { SaleController } from './sales/sale.controller';
+
+@Module({
+  imports: [
+
+    // =========================================================
+    // ARCHIVOS ESTÁTICOS / UPLOADS
+    // =========================================================
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'),
+      serveRoot: '/uploads',
+    }),
+
+    // =========================================================
+    // CONEXIÓN A POSTGRESQL + TYPEORM
+    // =========================================================
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: 'admin123',
+      database: 'erp_saas_db',
+
+      entities: [
+        Company,
+        Branch,
+        User,
+        Product,
+        ProductSerial,
+        BranchInventory,
+        Sale,
+        SaleItem,
+        SubscriptionPlan,
+        Currency,
+        ExchangeRate,
+        AccountTransaction,
+        AccountInstallment,
+        Employee,
+        EmployeeCommission,
+      ],
+
+      synchronize: true,
+    }),
+
+    // =========================================================
+    // ENTIDADES UTILIZADAS DIRECTAMENTE POR AppModule
+    // =========================================================
+    TypeOrmModule.forFeature([
+      BranchInventory,
+      Sale,
+      SaleItem,
+	  Loan,
+    ]),
+
+    // =========================================================
+    // MÓDULOS DEL ERP
+    // =========================================================
+    ProductModule,
+    CompanyModule,
+    UserModule,
+    AuthModule,
+    FinancialModule,
+  ],
+
+  // ===========================================================
+  // CONTROLADORES
+  // ===========================================================
+  controllers: [
+    BranchInventoryController,
+    SaleController,
+  ],
+})
+export class AppModule {}

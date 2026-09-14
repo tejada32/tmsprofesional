@@ -1,0 +1,112 @@
+Según la estructura que describes, al momento del registro el cliente debe seleccionar:
+
+El Plan de Suscripción: (Prueba, Plan A1, Plan A2, Plan B1, Plan B2, hasta Plan N).
+
+El Tipo de Negocio / Módulo Base:
+
+era mas o menos asi:
+
+Ventas General + Reparto (Colmados, Minimarket, Supermercado, Tienda por Departamentos).
+
+Venta Celulares.
+
+Tienda Tecnología.
+
+Tienda Muebles.
+
+Farmacia.
+
+Restaurant / Negocio de Comida.
+
+Préstamos.
+
+Ferreteria
+
+Servicios como salon de belleza / peluqueria
+
+habia uno para servicios profesionales
+
+80-0
+54--19
+55
+59
+57
+60
+201.101
+170
+
+@A123456789
+Alin Cam Perimetro 02
+Limpiar Cam Perimetro 9
+
+
+9---7  139
+7--8   137----147
+8--9   138---137
+
+P@rque1zfn
+08:CC:81:5D:3C:CD
+08:CC:81:5D:3C:BD
+08:CC:81:5D:3C:F8
+
+09 Final Nave 5
+10 Callejon 1
+11 Callejon 2
+12 Callejon 3
+13 Cancha
+14 Actual 10--14@
+15 11 Calle JJ--15
+Nueva--16
+12--17
+13--18
+14--19
+15 Paqrqueo Furg --20@
+16 Pta Trat--21@
+17 Paqr. Moto 4--27@
+18 Paqr. Moto 1--24@
+19 Paqr. Moto 2--25@
+20 no se ve(192.168.201.99) Nueva P
+21 Paqr. Moto 3--26@
+22 no se ve(Vacio)
+23 Paqr. Moto 5--28@
+24 Paqr. Moto 6--29@
+25 Afuera 01--30@
+26 Afuera 02--31@
+27
+28
+29
+30
+31
+32
+
+192.168.120.99
+192.168.120.95
+
+49
+22
+4-100
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNWEwYjk1Zi1kZWVlLTRkMmMtOGY0OC1kYTUxZTFlMjgyZTciLCJlbWFpbCI6ImFkbWluQHRtcy5jb20iLCJyb2xlIjoiQURNSU4iLCJjb21wYW55SWQiOiIyZDhlOWM1MS0xZjlmLTRiMGEtOTNhZS01MDVhZTFlNzQ3MWUiLCJpYXQiOjE3ODc3OTk0MDIsImV4cCI6MTc4NzgyODIwMn0.xj-5Lcm3LQOjt8GumuJZYIrwZVx7KFX51YdOmkFxB4g
+
+
+{"message":"Inicio de sesión exitoso","accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNWEwYjk1Zi1kZWVlLTRkMmMtOGY0OC1kYTUxZTFlMjgyZTciLCJlbWFpbCI6ImFkbWluQHRtcy5jb20iLCJyb2xlIjoiQURNSU4iLCJjb21wYW55SWQiOiIyZDhlOWM1MS0xZjlmLTRiMGEtOTNhZS01MDVhZTFlNzQ3MWUiLCJpYXQiOjE3ODc3OTk0MDIsImV4cCI6MTc4NzgyODIwMn0.xj-5Lcm3LQOjt8GumuJZYIrwZVx7KFX51YdOmkFxB4g","user":{"id":"15a0b95f-deee-4d2c-8f48-da51e1e282e7","email":"admin@tms.com","name":"Administrador General","role":"ADMIN","companyId":"2d8e9c51-1f9f-4b0a-93ae-505ae1e7471e","branchId":null,"mustChangePassword":true,"passwordChangedAt":"2026-08-27T02:55:57.545Z","isActive":true,"company":{"id":"2d8e9c51-1f9f-4b0a-93ae-505ae1e7471e","name":"Transportes del Cibao SRL","businessType":"GENERAL_STORE_DELIVERY","subscriptionPlanId":null,"isSetupCompleted":true,"isActive":true,"trialEndsAt":null,"createdAt":"2026-08-27T02:55:57.515Z","updatedAt":"2026-08-27T02:55:57.515Z"}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

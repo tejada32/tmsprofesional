@@ -1,0 +1,85 @@
+1. Gestión de Catálogo y Variantes (Tallas, Colores, Materiales y Telas)
+en mueblerías se requiere además una matriz de variantes de tapicería y acabados
+explicame esa parte bien con ejemplos
+
+2. Logística de Entregas y Fletes (Logistics & Delivery Dispatch)
+ módulo de despacho y rutas de entrega---- Pon esto en agenda
+ 3. Control de Artículos Voluminosos y Espacio en Almacén (WMS de Bodega)-- pon esto en agenda
+
+
+. Créditos Diferidos, Iniciales y Financiamiento Propio (Crédito Mueblero)--vamos a agregar
+la posibilidad que el financiamiento se pueda gestionar via un banco o cooperativa que es algo
+que se usa tambien en republica dominicana
+
+5. Servicio Post-Venta, Cambios por Defectos de Fábrica y Garantías de Madera/Estructura
+debemos asegurarnos de que la garantía en mueblerías distinga entre daño de fábrica, daño por transporte propio y mal uso del cliente.--*-ponlo en agenda
+
+
+-------------------------------------------------
+📋 Agenda de Desarrollo: Módulo Especializado de Mueblería
+1. Gestión de Variantes y Matriz de Atributos (Catálogo Inteligente)
+¿Qué es? No es solo crear un producto; es crear un "Producto Padre" (ej. Sofá Verona) con una matriz de variables: Tela (Lino/Terciopelo), Color (Gris/Azul/Beige), Orientación (Chaise Izquierdo/Derecho).
+
+Objetivo: Permitir al vendedor seleccionar estas opciones en el POS, que el sistema ajuste el precio según el material y descuente el inventario de la variante correcta.
+
+2. Logística, Fletes y Despacho a Domicilio (Agenda)
+Gestión de Rutas: Creación de DeliveryDispatch. Asignación de ventas a vehículos/conductores.
+
+Estados de Entrega: Registro de estados: Pendiente, En Almacén, En Ruta, Entregado, Instalado/Armado.
+
+Costos de Flete: Capacidad de cargar el costo de transporte al cliente o registrarlo como gasto operativo.
+
+3. WMS (Warehouse Management System) para Artículos Voluminosos (Agenda)
+Control de Ubicación: Optimización de espacio en bodega, identificando en qué pasillo o estantería está almacenado el mueble grande (crítico para muebles que no caben en repisas pequeñas).
+
+4. Financiamiento Externo (Bancos y Cooperativas)
+Integración Financiera: Añadir al módulo de créditos la opción de "Financiamiento Externo".
+
+Lógica: Al elegir banco/cooperativa, el sistema registra la venta como "Pagada" (por el tercero) y genera una cuenta por cobrar al Banco/Cooperativa, manteniendo el control de quién es el responsable de pagar el saldo (el banco).
+
+5. Garantía Evolutiva y Clasificación de Daños (Agenda)
+Trazabilidad: Diferenciar garantías por:
+
+Defecto de Fábrica: Cubre reparación/cambio sin costo.
+
+Daño por Transporte: Responsabilidad logística (debe auditarse con el conductor).
+
+Mal uso del cliente: Servicio técnico con costo (fuera de garantía).
+
+6. Funcionalidades Complementarias (Integradas a la Agenda)
+Gestión Multi-Moneda y Tasas: Manejo de tipos de cambio para ventas y contabilidad.
+
+Conciliación Bancaria Automática: Importación de movimientos para cuadre contable.
+
+Corte de Caja (Apertura/Cierre): Auditoría total de efectivo y medios de pago.
+
+Portal de Clientes (Autogestión): Espacio donde el cliente ve sus cuotas, estado de entrega y garantías.
+
+Roles y Permisos (ACL): Seguridad granular por usuario.
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGZlcnJldGVyaWEuY29tIiwic3ViIjoiN2RiYzA5Y2EtMzQ3MC00NzU1LWI1ZmMt...
+
+# Reemplaza la cadena larga de tu token JWT real dentro de las comillas
+$token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGZlcnJldGVyaWEuY29tIiwic3ViIjoiN2RiYzA5Y2EtMzQ3MC00NzU1LWI1ZmMt" 
+
+$headers = @{
+    "Authorization" = "Bearer $token"
+    "Content-Type" = "application/json"
+}
+
+$body = '{"newPassword": "NuevaPasswordSegura123"}'
+
+Invoke-RestMethod -Uri http://localhost:3000/auth/change-password -Method Patch -Headers $headers -Body $body
+
+
+
+       
+
+
+
+
+
+
+
+
+

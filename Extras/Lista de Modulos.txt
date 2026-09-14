@@ -1,0 +1,64 @@
+09/09/2026
+Dashboard: Panel principal de control y métricas del sistema.
+
+Sales / POS: Control de transacciones de venta y punto de venta.
+
+Inventory: Control de existencias, almacenes e inventario.
+
+Customers / Clients: Directorio y gestión de clientes.
+
+Suppliers: Directorio y gestión de proveedores.
+
+Purchases: Órdenes de compra y recepción de mercancía.
+
+Accounting: Contabilidad general, plan de cuentas y asientos contables.
+
+Loans: Módulo financiero de préstamos y financiamientos.
+
+Collections: Control y gestión de cobranzas.
+
+Repairs: Talleres de reparación y órdenes de servicio técnico.
+
+Warranty: Control de garantías y reclamaciones.
+
+Deliveries: Gestión de entregas y despachos logísticos.
+
+Tables: Gestión de mesas para restaurantes.
+
+Kitchen: Módulo de cocina y órdenes gastronómicas.
+
+Menu: Administración de menús y recetas.
+
+Appointments: Citas y agendamiento.
+
+Staff: Gestión de personal para servicios de cuidado personal.
+
+Projects: Gestión de proyectos para servicios profesionales.
+
+Billing / Time-tracking: Facturación por horas y seguimiento de tiempo.
+
+Policies: Gestión de pólizas de seguros.
+
+Claims: Reclamaciones de seguros.
+
+Commissions: Cálculo y distribución de comisiones.
+
+Prescriptions: Control de recetas médicas (Farmacias).
+
+Maintenance: Mantenimiento de infraestructura, equipos, maquinaria y órdenes de trabajo (disponible como módulo de base o add-on).
+
+Payrolls: Gestión de nóminas (disponible como módulo incluido por defecto en planes específicos o como add-on flexible).
+
+Trips / Vehicles: Gestión de rutas, manifiestos de transporte y flotas vehiculares (TMS).
+
+Reports: Reportes generales del sistema.
+
+
+----------------------------------------------------------------
+1.Listar módulos creados: Verificar archivos físicos en el backend y la lista de módulos registrados.
+
+2.Revisar subcategorías: Analizar cada una de las subcategorías existentes para asignar los módulos que les corresponden.
+
+2.Pruebas de registro: Simular el registro de empresas con las diferentes subcategorías para validar los módulos permitidos.
+
+2.Revisar formularios y tablas: Inspeccionar los componentes por subcategoría (como pedidos, facturas, conduces, inventarios, etc., usando el ejemplo de tiendas de muebles).

@@ -1,0 +1,34 @@
+Inicio
+Boton Registarse
+Formulario para llenar Datos Basicos:{Nombre, Nombre Empresa,Email, Password(encriptado)[vendra con un password defaul para luego cambiarse::tmsprofesional"], un menu desplegable para eleguir plan), Menu para eleguir Pla( esta parte va a determinar cuales modulo se le habilitaran segun el que elija)}
+
+(Planes : Version Prueba, Plan A1, Plan A2, Plan B1, Plan B2, ...Plan N)
+
+(Tipos de Negocio: Ventas General, Muebleria, Farmacia, Restauran/Negocio Comida, Servicios Profesionales, Servicios Tecnicos, (Puedes recomendarme otra categoria que falta))
+
+el sistema va a guardar( Email del registro, Ip Publica del cliente,(Algun otro dato que recomiendes talvez macaddress del dispocitivo)
+cuando el cliente complete los datos de registros el sistema verificara que ese email no este registrado antes, si el email ya sido registrado debe rechazar el registro y poner un mensaje diciendo: "Ya se ha registrado antes con ese usuario,no puede usarlo 2 veces", si email no esta registrado entonces verificar plan, si es plan: "Version Prueba" entonces revisar si ese ip publica no se ha usado para registrar un plan de pruebas antes, el sistema permitara una ip publica registrarse con email diferentes un maximo de 3 veces, si lo intenta mas de 3 el sitema le negara el registro y dira un mensaje: Ya agoto el uso de versiones de Prueba, use uno de los planes pagados para registrarse", la misma verificacion del email igual para el campo sujerido por ejemplo si es mac address no permitir mas de  aunque use email diferentes
+
+en los planes pagos si podra registrase cuantas veces quiera en solo asegurando no repetir email
+te recuerdo que habra planes multi compañias, multi almacen y multi sucursales
+
+los usarios que cumplan los requisitos para registrarse ya con sus datos en las tablas, lo siguiente sera preparar el acceso a los modulos que corresponda segun ees grupo y que se le habiliten los permisos para los accesos correspodientes Ejemplo: si el Plan A solo le incluye 1 almacen y cero sucursales ese usario no de tener permido agregar un nuevo almacen o sucursal
+
+Dime que mas falta, vamos a organizar todo antes de iniciar
+
+
+--------------------------------------------------
+Implementar el JwtAuthGuard: Crear el guardián de autenticación en NestJS para validar el token en las peticiones de los módulos protegidos.
+
+Crear el módulo de Sucursales (Branches): Permitir que la empresa registrada comience a configurar sus sucursales físicas o almacenes dentro del ERP.
+
+
+Niveles de Suscripción Recomendados
+Plan de Prueba (Trial): Ofrece 3 días de acceso temporal con un control estricto de seguridad (restringido a un máximo de 3 registros por IP o dispositivo) para impulsar la conversión sin fricción.Quiero que ese plan tenga acceso total a todos los modulos que dependan del tipo de negocio elegido, por ejemplo si elige prestamos no debe tener acceso modulos de ventas,ni restaurant, 2 solo almacen, 2 puntos de venta, 1 Sucursal
+
+Plan Básico: Precio $US20 Diseñado para pequeños comercios, incluye un límite de 1 sucursal, 1 almacénes y acceso exclusivo a módulos relacionados con el tipo de negocio selecionado, 1 Sola Empresa
+
+Plan Profesional: $US30 Orientado a negocios en crecimiento, contempla hasta 3 sucursales, 5, el uso de los vehiculos como almacen , acceso exclusivo a módulos relacionados
+
+Plan Enterprise: $US40 Pensado para grandes operaciones, ofrece sucursales y almacenes ilimitados,3 Empresas,con la acceso a los modulos que correspondan al a cada empresa y el tipo de negocio seleccionado
+

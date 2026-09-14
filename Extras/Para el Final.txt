@@ -1,0 +1,499 @@
+Seguridad de contraseña, que no permita usar faciles
+configuracion de modulos segun el tipo de negocio asignado
+
+
+1. Productos
+
+Esta es una de las tablas más importantes.
+
+Campo	Función
+id	Identificador único
+company_id	Empresa propietaria
+category_id	Categoría
+subcategory_id	Subcategoría
+sku	Código interno del producto
+barcode	Código de barras
+name	Nombre
+description	Descripción
+product_type	Producto, servicio, combo, etc.
+brand_id	Marca
+unit_id	Unidad de medida
+cost_price	Costo
+sale_price	Precio de venta
+tax_id	Impuesto aplicable
+min_stock	Stock mínimo
+max_stock	Stock máximo
+reorder_point	Punto de reposición
+is_active	Activo/inactivo
+created_at	Fecha de creación
+updated_at	Última modificación
+
+Importante: el precio puede necesitar después una tabla aparte para manejar varios precios: público, mayorista, distribuidor, etc.
+
+2. Inventario
+
+Aquí hay que hacer una distinción importante: Productos dice qué es el producto; Inventario dice cuánto hay y dónde está.
+
+Campo	Función
+id	Identificador
+company_id	Empresa
+branch_id	Sucursal
+warehouse_id	Almacén
+product_id	Producto
+quantity	Existencia actual
+reserved_quantity	Cantidad reservada
+available_quantity	Disponible para vender
+min_stock	Mínimo
+max_stock	Máximo
+reorder_point	Punto de reposición
+average_cost	Costo promedio
+last_cost	Último costo
+location	Ubicación física
+last_movement_at	Último movimiento
+created_at	Creación
+updated_at	Actualización
+
+Pero para un ERP serio, no recomiendo que Inventario sea solamente esta tabla.
+
+Deberías tener también:
+
+inventory_movements
+
+Para registrar:
+
+Entrada por compra
+Salida por venta
+Ajuste
+Transferencia
+Devolución
+Pérdida
+Daño
+Consumo interno
+Corrección de inventario
+
+Así puedes saber por qué el inventario pasó de 100 a 73 unidades.
+
+3. Usuarios
+Campo	Función
+id	Identificador
+company_id	Empresa
+branch_id	Sucursal principal
+role_id	Rol/permisos
+name	Nombre
+last_name	Apellido
+username	Usuario
+email	Correo
+phone	Teléfono
+password_hash	Contraseña cifrada/hash
+is_active	Estado
+must_change_password	Obligar cambio de contraseña
+last_login_at	Último acceso
+created_at	Creación
+updated_at	Actualización
+
+Para tu ERP yo agregaría después:
+
+permisos individuales
+sesiones
+dispositivos
+historial de accesos
+2FA
+restricciones por sucursal
+restricciones por módulo
+4. Ventas
+
+La venta debería tener una cabecera y otra tabla para los productos vendidos.
+
+sales
+Campo	Función
+id	Identificador
+company_id	Empresa
+branch_id	Sucursal
+warehouse_id	Almacén
+user_id	Vendedor/cajero
+customer_id	Cliente
+sale_number	Número de factura/venta
+sale_date	Fecha
+sale_type	Contado/crédito
+subtotal	Subtotal
+discount	Descuento
+tax	Impuestos
+total	Total
+amount_paid	Pagado
+balance_due	Pendiente
+currency_id	Moneda
+exchange_rate	Tasa de cambio
+payment_status	Estado de pago
+status	Completada/anulada/etc.
+notes	Notas
+created_at	Creación
+updated_at	Actualización
+sale_items
+Campo	Función
+id	Identificador
+sale_id	Venta
+product_id	Producto
+quantity	Cantidad
+unit_price	Precio unitario
+discount	Descuento
+tax	Impuesto
+subtotal	Subtotal
+total	Total
+
+Esto es indispensable: no debes guardar todos los productos de una venta directamente en sales.
+
+5. Clientes
+Campo	Función
+id	Identificador
+company_id	Empresa propietaria
+customer_type	Persona/empresa
+first_name	Nombre
+last_name	Apellido
+business_name	Nombre comercial
+identification_type	Tipo de identificación
+identification_number	RNC/cédula/pasaporte/etc.
+email	Correo
+phone	Teléfono
+mobile	Celular
+address	Dirección
+city	Ciudad
+province	Provincia
+country	País
+credit_limit	Límite de crédito
+payment_terms	Condiciones de pago
+current_balance	Balance pendiente
+is_active	Activo
+created_at	Creación
+updated_at	Actualización
+
+Para Latinoamérica, identification_type es especialmente importante.
+
+6. Empresas
+
+Esta tabla es fundamental porque tu ERP será multiempresa.
+
+Campo	Función
+id	Identificador
+legal_name	Razón social
+commercial_name	Nombre comercial
+identification_type	RNC/NIT/RUC/etc.
+identification_number	Identificación fiscal
+business_type_id	Tipo de negocio
+email	Correo
+phone	Teléfono
+address	Dirección
+city	Ciudad
+province	Provincia
+country	País
+currency_id	Moneda principal
+timezone	Zona horaria
+logo	Logo
+website	Página web
+is_active	Estado
+created_at	Creación
+updated_at	Actualización
+
+Además, en tu caso:
+
+branches
+
+Debería existir separada de companies.
+
+Porque:
+
+Empresa → Sucursales → Almacenes
+
+Por ejemplo:
+
+Tejada Multiservices
+│
+├── Santiago
+│   ├── Almacén principal
+│   └── Almacén secundario
+│
+└── Navarrete
+    └── Almacén principal
+7. Suplidores / Proveedores
+Campo	Función
+id	Identificador
+company_id	Empresa que registra al suplidor
+supplier_type	Persona/empresa
+legal_name	Razón social
+commercial_name	Nombre comercial
+identification_type	RNC/NIT/etc.
+identification_number	Identificación
+contact_name	Persona de contacto
+email	Correo
+phone	Teléfono
+mobile	Celular
+address	Dirección
+city	Ciudad
+province	Provincia
+country	País
+payment_terms	Condiciones de pago
+credit_limit	Crédito otorgado
+current_balance	Lo que se le debe
+is_active	Estado
+notes	Notas
+created_at	Creación
+updated_at	Actualización
+8. Cuentas por cobrar
+
+Aquí te recomiendo no depender únicamente de un current_balance dentro de clientes.
+
+La cuenta por cobrar debe representar cada deuda/transacción.
+
+accounts_receivable
+Campo	Función
+id	Identificador
+company_id	Empresa
+branch_id	Sucursal
+customer_id	Cliente
+sale_id	Venta relacionada
+invoice_number	Factura
+issue_date	Fecha de emisión
+due_date	Fecha de vencimiento
+original_amount	Monto original
+paid_amount	Pagado
+balance	Balance
+currency_id	Moneda
+exchange_rate	Tasa
+status	Pendiente/parcial/pagada/vencida
+notes	Notas
+created_at	Creación
+updated_at	Actualización
+
+Y además:
+
+accounts_receivable_payments
+Campo	Función
+id	Identificador
+accounts_receivable_id	Cuenta por cobrar
+customer_id	Cliente
+payment_date	Fecha
+amount	Monto pagado
+payment_method_id	Forma de pago
+reference	Referencia
+user_id	Usuario que registró
+notes	Notas
+created_at	Creación
+
+Esto permite algo como:
+
+Factura #00125
+Total:       RD$50,000
+│
+├── Abono 1: RD$10,000
+├── Abono 2: RD$15,000
+└── Abono 3: RD$5,000
+                 ───────
+Pendiente:       RD$20,000
+Algo que considero MUY importante para tu ERP
+
+No construiría solamente estas 8 tablas. Como estructura base, pensaría en:
+
+EMPRESA
+   │
+   ├── SUCURSALES
+   │       │
+   │       └── ALMACENES
+   │
+   ├── USUARIOS
+   │
+   ├── CLIENTES
+   │
+   ├── SUPLIDORES
+   │
+   ├── PRODUCTOS
+   │       │
+   │       └── INVENTARIO
+   │
+   ├── VENTAS
+   │       │
+   │       └── VENTA_ITEMS
+   │
+   ├── COMPRAS
+   │       │
+   │       └── COMPRA_ITEMS
+   │
+   ├── CUENTAS POR COBRAR
+   │       │
+   │       └── PAGOS
+   │
+   └── CUENTAS POR PAGAR
+           │
+           └── PAGOS
+
+
+9. Facturas
+invoices
+Campo	Indispensable	Función
+id	✅	ID interno
+company_id	✅	Empresa
+branch_id	✅	Sucursal
+customer_id	✅	Cliente
+sale_id	✅	Venta relacionada
+invoice_number	✅	Número interno
+fiscal_number	🇩🇴	NCF / comprobante fiscal
+invoice_type	✅	Contado, crédito, devolución, etc.
+issue_date	✅	Fecha
+due_date		Vencimiento
+currency_id	✅	Moneda
+exchange_rate		Tasa de cambio
+subtotal	✅	Subtotal
+discount	✅	Descuento
+tax	✅	Impuestos
+total	✅	Total
+paid_amount	✅	Total pagado
+balance_due	✅	Pendiente
+payment_status	✅	Pagada, pendiente, parcial, vencida
+status	✅	Emitida, anulada, etc.
+notes		Notas
+created_by	✅	Usuario
+created_at	✅	Creación
+updated_at	✅	Actualización
+
+Y:
+
+invoice_items
+invoice
+   │
+   ├── producto A
+   ├── producto B
+   ├── producto C
+   └── servicio D
+
+Campos:
+
+Campo	Función
+id	ID
+invoice_id	Factura
+product_id	Producto/servicio
+description	Descripción facturada
+quantity	Cantidad
+unit_price	Precio
+discount	Descuento
+tax	Impuesto
+subtotal	Subtotal
+total	Total
+10. Recibos
+
+Aquí hay algo importante: un recibo debe poder aplicarse a una o varias facturas.
+
+receipts
+Campo	Indispensable	Función
+id	✅	ID
+company_id	✅	Empresa
+branch_id	✅	Sucursal
+customer_id	✅	Cliente
+receipt_number	✅	Número de recibo
+receipt_date	✅	Fecha
+total_amount	✅	Total recibido
+currency_id	✅	Moneda
+exchange_rate		Tasa
+payment_method_id	✅	Efectivo, transferencia, tarjeta, etc.
+reference		Número de cheque/transferencia
+cash_register_id		Caja
+user_id	✅	Usuario que recibió
+status	✅	Emitido/anulado
+notes		Notas
+created_at	✅	Creación
+
+Pero también:
+
+receipt_allocations
+
+Esta tabla es muy importante.
+
+Permite:
+
+Recibo #00045
+Cliente: Juan
+
+Total recibido: RD$30,000
+
+        ↓
+
+Factura #1001 → RD$20,000
+Factura #1007 → RD$10,000
+
+Campos:
+
+Campo	Función
+id	ID
+receipt_id	Recibo
+invoice_id	Factura
+amount	Monto aplicado
+created_at	Fecha
+Relación completa
+
+Entonces la parte de ventas/cobros quedaría aproximadamente:
+
+CLIENTE
+   │
+   ├── VENTA
+   │      │
+   │      └── FACTURA
+   │             │
+   │             └── CUENTA POR COBRAR
+   │
+   └── RECIBO
+          │
+          └── APLICACIONES
+                 │
+                 ├── FACTURA #001
+                 ├── FACTURA #005
+                 └── FACTURA #009
+
+Y esto te permite manejar correctamente:
+
+Venta de contado
+Venta
+  ↓
+Factura RD$10,000
+  ↓
+Pago RD$10,000
+  ↓
+Recibo
+  ↓
+Factura PAGADA
+Venta a crédito
+Venta
+  ↓
+Factura RD$50,000
+  ↓
+Cuenta por cobrar RD$50,000
+
+Luego:
+
+Recibo #001
+RD$20,000
+        ↓
+Factura
+        ↓
+Pendiente RD$30,000
+
+Y posteriormente:
+
+Recibo #002
+RD$30,000
+        ↓
+Factura
+        ↓
+PAGADA
+Y algo todavía mejor
+
+El mismo sistema puede soportar un cliente que tenga:
+
+Factura A       RD$20,000
+Factura B       RD$15,000
+Factura C       RD$40,000
+─────────────────────────
+Total           RD$75,000
+
+Recibo          RD$50,000
+─────────────────────────
+Pendiente       RD$25,000
+
+sin perder el historial.
+

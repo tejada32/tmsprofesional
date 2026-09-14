@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMS Profesional</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .sidebar-item {
+            transition: all 0.2s ease-in-out;
+        }
+        .sidebar-item:hover {
+            background-color: #f1f5f9;
+        }
+        aside::-webkit-scrollbar, header::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        aside::-webkit-scrollbar-thumb, header::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 h-screen flex flex-col overflow-hidden font-sans">
+
+    <!-- BARRA SUPERIOR DE MENÚS ESTILO NOTEPAD++ -->
+    <header class="bg-[#f0f0f0] text-slate-700 h-8 flex items-center px-2 text-xs select-none border-b border-[#cccccc] overflow-x-auto whitespace-nowrap z-30 shadow-xs">
+        <nav class="flex space-x-0.5 items-center">
+            
+           <!-- Dashboard -->
+    <div class="relative menu-dropdown">
+    <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Dashboard</button>
+    <div class="absolute left-0 mt-0.5 w-64 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1">
+        <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Dashboard</div>
+        
+        <!-- 1. Ventas -->
+        <div class="px-3 py-1 font-bold text-slate-500 text-[11px] bg-slate-50 mt-1">Ventas</div>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Ventas de Hoy</a>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Ventas del Mes</a>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Productos Más Vendidos</a>
+
+        <!-- 2. Finanzas -->
+        <div class="px-3 py-1 font-bold text-slate-500 text-[11px] bg-slate-50 mt-1">Finanzas</div>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Ingresos del Mes</a>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Gastos del Mes</a>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Cuentas por Cobrar</a>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Cuentas por Pagar</a>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Caja de Hoy</a>
+
+        <!-- 3. Inventario -->
+        <div class="px-3 py-1 font-bold text-slate-500 text-[11px] bg-slate-50 mt-1">Inventario</div>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Existencias</a>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Inventario Bajo</a>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Sin Existencia</a>
+
+        <!-- 4. Alertas y Comunicación -->
+        <div class="px-3 py-1 font-bold text-slate-500 text-[11px] bg-slate-50 mt-1">Alertas</div>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Avisos</a>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Mensajes</a>
+
+        <!-- 5. Gráficos y Estadísticas -->
+        <div class="px-3 py-1 font-bold text-slate-500 text-[11px] bg-slate-50 mt-1">Gráficos</div>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Gráfico Ventas</a>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Gráfico Cliente</a>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Gráfico Inventario</a>
+        <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white pl-6">Gráfico Resultados</a>
+    </div>
+</div>
+
+
+            <!-- Ventas -->
+            <div class="relative menu-dropdown">
+                <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Ventas</button>
+                <div class="absolute left-0 mt-0.5 w-72 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1 max-h-96 overflow-y-auto">
+                    <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Módulo de Ventas</div>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Clientes</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Pedidos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Cotizaciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Facturas</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Devoluciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Notas de Crédito</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Entregas</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Órdenes de Taller / Garantías</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Vendedores</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Descuentos / Promociones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Informes de Ventas</a>
+                </div>
+            </div>
+
+            <!-- Compras -->
+            <div class="relative menu-dropdown">
+                <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Compras</button>
+                <div class="absolute left-0 mt-0.5 w-72 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1 max-h-96 overflow-y-auto">
+                    <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Módulo de Compras</div>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Proveedores</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Órdenes de Compra</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Cotizaciones de Proveedores</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Entrada de Mercancías</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Facturas de Compra</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Devoluciones a Proveedores</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Notas de Crédito de Proveedores</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Gastos de Compra</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Compras Recurrentes</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">Informes de Compras</a>
+                </div>
+            </div>
+
+            <!-- Créditos -->
+            <div class="relative menu-dropdown">
+                <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Créditos</button>
+                <div class="absolute left-0 mt-0.5 w-72 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1 max-h-96 overflow-y-auto">
+                    <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Módulo de Créditos</div>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">1. Solicitudes de Crédito</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">2. Créditos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">3. Cuotas / Calendario de Pagos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">4. Cobros</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">5. Cuentas por Cobrar</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">6. Acuerdos de Pago</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">7. Refinanciamientos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">8. Créditos Cancelados</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">9. Garantes</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">10. Garantías / Colaterales</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">11. Cobradores</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">12. Informes de Créditos</a>
+                </div>
+            </div>
+
+            <!-- Finanzas -->
+            <div class="relative menu-dropdown">
+                <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Finanzas</button>
+                <div class="absolute left-0 mt-0.5 w-72 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1 max-h-96 overflow-y-auto">
+                    <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Módulo de Finanzas</div>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">1. Cajas</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">2. Bancos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">3. Cuentas Bancarias</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">4. Ingresos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">5. Egresos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">6. Transferencias</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">7. Conciliación Bancaria</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">8. Cuentas por Cobrar</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">9. Cuentas por Pagar</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">10. Gastos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">11. Presupuestos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">12. Préstamos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">13. Activos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">14. Pasivos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">15. Patrimonio</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">16. Contabilidad</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">17. Informes Financieros</a>
+                </div>
+            </div>
+
+            <!-- Inventario -->
+            <div class="relative menu-dropdown">
+                <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Inventario</button>
+                <div class="absolute left-0 mt-0.5 w-72 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1 max-h-96 overflow-y-auto">
+                    <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Módulo de Inventario</div>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">1. Productos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">2. Categorías</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">3. Marcas</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">4. Unidades de Medida</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">5. Almacenes</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">6. Entradas</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">7. Salidas</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">8. Transferencias</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">9. Ajustes de Inventario</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">10. Inventario Físico</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">11. Lotes</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">12. Números de Serie</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">13. Vencimientos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">14. Kardex</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">15. Precios</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">16. Inventario Mínimo / Máximo</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">17. Productos Dañados / Perdidos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">18. Informes de Inventario</a>
+                </div>
+            </div>
+
+            <!-- Taller -->
+            <div class="relative menu-dropdown">
+                <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Taller</button>
+                <div class="absolute left-0 mt-0.5 w-72 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1 max-h-96 overflow-y-auto">
+                    <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Módulo de Taller</div>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">1. Clientes</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">2. Equipos / Vehículos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">3. Órdenes de Taller</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">4. Diagnósticos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">5. Servicios</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">6. Repuestos / Materiales</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">7. Técnicos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">8. Estados de Reparación</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">9. Garantías</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">10. Presupuestos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">11. Recepción</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">12. Entrega</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">13. Seguimiento de Reparaciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">14. Historial de Servicios</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">15. Costos de Reparación</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">16. Fotos / Evidencias</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">17. Informes de Taller</a>
+                </div>
+            </div>
+
+            <!-- Servicio al Cliente -->
+            <div class="relative menu-dropdown">
+                <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Servicio al Cliente</button>
+                <div class="absolute left-0 mt-0.5 w-72 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1 max-h-96 overflow-y-auto">
+                    <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Módulo de Servicio al Cliente</div>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">1. Clientes</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">2. Consultas</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">3. Solicitudes</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">4. Tickets / Casos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">5. Quejas y Reclamos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">6. Sugerencias</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">7. Garantías</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">8. Devoluciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">9. Seguimiento</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">10. Tareas / Compromisos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">11. Estados y Prioridades</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">12. Historial de Atención</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">13. Informes de Servicio al Cliente</a>
+                </div>
+            </div>
+
+            <!-- Mantenimiento -->
+            <div class="relative menu-dropdown">
+                <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Mantenimiento</button>
+                <div class="absolute left-0 mt-0.5 w-72 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1 max-h-96 overflow-y-auto">
+                    <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Módulo de Mantenimiento</div>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">1. Activos / Equipos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">2. Categoria / Grupos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">3. Mantenimiento Preventivo</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">4. Mantenimiento Correctivo</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">5. Órdenes de Mantenimiento</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">6. Programación de Mantenimiento</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">7. Técnicos / Responsables</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">8. Repuestos / Materiales</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">9. Servicios Externos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">10. Historial de Mantenimiento</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">11. Costos de Mantenimiento</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">12. Garantías</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">13. Alertas / Próximos Mantenimientos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">14. Informes de Mantenimiento</a>
+                </div>
+            </div>
+
+            <!-- Recursos Humanos -->
+            <div class="relative menu-dropdown">
+                <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Recursos Humanos</button>
+                <div class="absolute left-0 mt-0.5 w-72 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1 max-h-96 overflow-y-auto">
+                    <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Módulo de Recursos Humanos</div>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">1. Empleados</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">2. Departamentos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">3. Puestos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">4. Contratos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">5. Expedientes</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">6. Asistencia</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">7. Horarios / Turnos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">8. Permisos / Ausencias</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">9. Vacaciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">10. Nómina</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">11. Comisiones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">12. Préstamos a Empleados</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">13. Deducciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">14. Bonificaciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">15. Evaluaciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">16. Capacitaciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">17. Documentos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">18. Liquidaciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">19. Historial Laboral</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">20. Informes de Recursos Humanos</a>
+                </div>
+            </div>
+
+            <!-- Configuración -->
+            <div class="relative menu-dropdown">
+                <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Configuración</button>
+                <div class="absolute left-0 mt-0.5 w-72 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1 max-h-96 overflow-y-auto">
+                    <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Módulo de Configuración</div>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">1. Empresa</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">2. Sucursales</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">3. Usuarios</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">4. Roles y Permisos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">5. Configuración General</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">6. Monedas</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">7. Impuestos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">8. Series / Numeraciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">9. Métodos de Pago</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">10. Cajas</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">11. Bancos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">12. Almacenes</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">13. Impresoras</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">14. Facturación</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">15. Notificaciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">16. Seguridad</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">17. Integraciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">18. Copias de Seguridad</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">19. Auditoría</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">20. Configuración de Módulos</a>
+                </div>
+            </div>
+
+            <!-- Addons -->
+            <div class="relative menu-dropdown">
+                <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Addons</button>
+                <div class="absolute left-0 mt-0.5 w-72 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1 max-h-96 overflow-y-auto">
+                    <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Módulo de Addons</div>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">1. Tienda de Addons</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">2. Mis Addons</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">3. Addons Instalados</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">4. Addons Disponibles</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">5. Actualizaciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">6. Integraciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">7. API</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">8. Importar / Exportar</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">9. Plantillas</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">10. Informes de Addons</a>
+                </div>
+            </div>
+
+            <!-- Informes / Reportes -->
+            <div class="relative menu-dropdown">
+                <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Informes / Reportes</button>
+                <div class="absolute left-0 mt-0.5 w-72 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1 max-h-96 overflow-y-auto">
+                    <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Módulo de Informes / Reportes</div>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">1. Ventas</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">2. Compras</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">3. Inventario</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">4. Créditos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">5. Finanzas</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">6. Recursos Humanos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">7. Taller</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">8. Servicio al Cliente</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">9. Mantenimiento</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">10. Clientes</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">11. Proveedores</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">12. Productos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">13. Impuestos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">14. Contabilidad</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">15. Auditoría</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">16. Reportes Personalizados</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">17. Reportes Programados</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">18. Exportar Reportes</a>
+                </div>
+            </div>
+
+            <!-- Ayuda -->
+            <div class="relative menu-dropdown">
+                <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Ayuda</button>
+                <div class="absolute left-0 mt-0.5 w-72 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1 max-h-96 overflow-y-auto">
+                    <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Módulo de Ayuda</div>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">1. Centro de Ayuda</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">2. Guías y Tutoriales</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">3. Preguntas Frecuentes</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">4. Soporte Técnico</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">5. Contactar Soporte</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">6. Novedades y Actualizaciones</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">7. Atajos de Teclado</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">8. Documentación</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">9. Reportar un Problema</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">10. Solicitar una Función</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">11. Acerca de TMS Profesional</a>
+                </div>
+            </div>
+
+            <!-- Accesos Directos -->
+            <div class="relative menu-dropdown">
+                <button class="px-2 py-1 hover:bg-[#e0e0e0] hover:border hover:border-[#adadad] active:bg-[#cccccc] rounded-none cursor-pointer font-normal flex items-center gap-1">Accesos Directos</button>
+                <div class="absolute left-0 mt-0.5 w-72 bg-white text-slate-800 rounded-none shadow-md border border-[#cccccc] hidden z-50 py-1 max-h-96 overflow-y-auto">
+                    <div class="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider">Módulo de Accesos Directos</div>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">1. Pedido</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">2. Cotización</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">3. Factura</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">4. Nueva Cotización</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">5. Nuevo Pedido</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">6. Caja</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">7. Productos</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">8. Entrada de Inventario</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">9. Entrada de Inventario</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">10. Transferencia de Inventario</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">11. Orden de Taller</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">12. Ticket de Servicio</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">13. Orden de Mantenimiento</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">14. Buscar</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">15. Acceso Directo 1</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">16. Acceso Directo 2</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">17. Acceso Directo 3</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">18. Acceso Directo 4</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">19. Acceso Directo 5</a>
+                    <a href="#" class="block px-4 py-1 hover:bg-[#3399ff] hover:text-white">20. Acceso Directo 6</a>
+                </div>
+            </div>
+
+        </nav>
+		
+
+		
+    </header>
+
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="flex flex-1 overflow-hidden">
+        
+        <!-- BARRA LATERAL CON SUBMENÚS DESPLEGABLES -->
+        <aside class="w-64 bg-white border-r border-slate-200 flex flex-col py-2 px-2 space-y-1 overflow-y-auto z-20 text-xs">
+            
+            <!-- Dashboard -->
+            <div class="sidebar-dropdown">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">🏠</span> <span>Dashboard</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Ventas de Hoy</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Ventas del Mes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Productos Más Vendidos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Ingresos del Mes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Gastos del Mes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Cuentas por Cobrar</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Cuentas por Pagar</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Caja de Hoy</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Existencias</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Inventario Bajo</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Sin Existencia</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Avisos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Mensajes</a>
+                </div>
+            </div>
+
+            <!-- Ventas -->
+            <div class="sidebar-dropdown">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">💰</span> <span>Ventas</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Clientes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Pedidos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">3. Cotizaciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">4. Facturas</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">5. Devoluciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">6. Notas de Crédito</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">7. Entregas</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">8. Órdenes de Taller / Garantías</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">9. Vendedores</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">10. Descuentos / Promociones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">11. Informes de Ventas</a>
+                </div>
+            </div>
+
+            <!-- Compras -->
+            <div class="sidebar-dropdown">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">🛒</span> <span>Compras</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Proveedores</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Órdenes de Compra</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">3. Cotizaciones de Proveedores</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">4. Entrada de Mercancías</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">5. Facturas de Compra</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">6. Devoluciones a Proveedores</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">7. Notas de Crédito de Proveedores</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">8. Gastos de Compra</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">9. Compras Recurrentes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">10. Informes de Compras</a>
+                </div>
+            </div>
+
+            <!-- Créditos -->
+            <div class="sidebar-dropdown">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">💳</span> <span>Créditos</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Solicitudes de Crédito</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Créditos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">3. Cuotas / Calendario de Pagos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">4. Cobros</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">5. Cuentas por Cobrar</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">6. Acuerdos de Pago</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">7. Refinanciamientos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">8. Créditos Cancelados</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">9. Garantes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">10. Garantías / Colaterales</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">11. Cobradores</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">12. Informes de Créditos</a>
+                </div>
+            </div>
+
+            <!-- Finanzas -->
+            <div class="sidebar-dropdown">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">💵</span> <span>Finanzas</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Cajas</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Bancos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">3. Cuentas Bancarias</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">4. Ingresos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">5. Egresos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">6. Transferencias</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">7. Conciliación Bancaria</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">8. Cuentas por Cobrar</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">9. Cuentas por Pagar</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">10. Gastos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">11. Presupuestos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">12. Préstamos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">13. Activos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">14. Pasivos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">15. Patrimonio</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">16. Contabilidad</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">17. Informes Financieros</a>
+                </div>
+            </div>
+
+            <!-- Inventario -->
+            <div class="sidebar-dropdown">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">📦</span> <span>Inventario</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Productos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Categorías</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">3. Marcas</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">4. Unidades de Medida</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">5. Almacenes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">6. Entradas</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">7. Salidas</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">8. Transferencias</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">9. Ajustes de Inventario</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">10. Inventario Físico</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">11. Lotes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">12. Números de Serie</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">13. Vencimientos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">14. Kardex</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">15. Precios</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">16. Inventario Mínimo / Máximo</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">17. Productos Dañados / Perdidos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">18. Informes de Inventario</a>
+                </div>
+            </div>
+
+            <!-- Taller -->
+            <div class="sidebar-dropdown">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">🛠️</span> <span>Taller</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Clientes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Equipos / Vehículos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">3. Órdenes de Taller</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">4. Diagnósticos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">5. Servicios</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">6. Repuestos / Materiales</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">7. Técnicos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">8. Estados de Reparación</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">9. Garantías</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">10. Presupuestos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">11. Recepción</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">12. Entrega</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">13. Seguimiento de Reparaciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">14. Historial de Servicios</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">15. Costos de Reparación</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">16. Fotos / Evidencias</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">17. Informes de Taller</a>
+                </div>
+            </div>
+
+            <!-- Servicio al Cliente -->
+            <div class="sidebar-dropdown">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">🎧</span> <span>Servicio al Cliente</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Clientes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Consultas</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">3. Solicitudes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">4. Tickets / Casos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">5. Quejas y Reclamos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">6. Sugerencias</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">7. Garantías</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">8. Devoluciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">9. Seguimiento</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">10. Tareas / Compromisos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">11. Estados y Prioridades</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">12. Historial de Atención</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">13. Informes de Servicio al Cliente</a>
+                </div>
+            </div>
+
+            <!-- Mantenimiento -->
+            <div class="sidebar-dropdown">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">🔧</span> <span>Mantenimiento</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Activos / Equipos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Categoria / Grupos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Mantenimiento Preventivo</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">4. Mantenimiento Correctivo</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">5. Órdenes de Mantenimiento</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">6. Programación de Mantenimiento</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">7. Técnicos / Responsables</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">8. Repuestos / Materiales</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">9. Servicios Externos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">10. Historial de Mantenimiento</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">11. Costos de Mantenimiento</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">12. Garantías</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">13. Alertas / Próximos Mantenimientos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">14. Informes de Mantenimiento</a>
+                </div>
+            </div>
+
+            <!-- Recursos Humanos -->
+            <div class="sidebar-dropdown">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">👥</span> <span>Recursos Humanos</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Empleados</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Departamentos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">3. Puestos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">4. Contratos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">5. Expedientes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">6. Asistencia</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">7. Horarios / Turnos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">8. Permisos / Ausencias</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">9. Vacaciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">10. Nómina</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">11. Comisiones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">12. Préstamos a Empleados</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">13. Deducciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">14. Bonificaciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">15. Evaluaciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">16. Capacitaciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">17. Documentos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">18. Liquidaciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">19. Historial Laboral</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">20. Informes de Recursos Humanos</a>
+                </div>
+            </div>
+
+            <!-- Informes / Reportes -->
+            <div class="sidebar-dropdown">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">📊</span> <span>Informes / Reportes</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Ventas</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Compras</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Inventario</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">4. Créditos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">5. Finanzas</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">6. Recursos Humanos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">7. Taller</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">8. Servicio al Cliente</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">9. Mantenimiento</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">10. Clientes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">11. Proveedores</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">12. Productos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">13. Impuestos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">14. Contabilidad</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">15. Auditoría</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">16. Reportes Personalizados</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">17. Reportes Programados</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">18. Exportar Reportes</a>
+                </div>
+            </div>
+
+            <!-- Addons -->
+            <div class="sidebar-dropdown">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">🧩</span> <span>Addons</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Tienda de Addons</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">2. Mis Addons</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">3. Addons Instalados</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">4. Addons Disponibles</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">5. Actualizaciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">6. Integraciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">7. API</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">8. Importar / Exportar</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Plantillas</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Informes de Addons</a>
+                </div>
+            </div>
+
+            <!-- Ayuda -->
+            <div class="sidebar-dropdown">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">❓</span> <span>Ayuda</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Centro de Ayuda</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Guías y Tutoriales</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Preguntas Frecuentes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">4. Soporte Técnico</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">5. Contactar Soporte</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">6. Novedades y Actualizaciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">7. Atajos de Teclado</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">8. Documentación</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">9. Reportar un Problema</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">10. Solicitar una Función</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">11. Acerca de TMS Profesional</a>
+                </div>
+            </div>
+
+            <!-- Accesos Directos -->
+            <div class="sidebar-dropdown">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">⚡</span> <span>Accesos Directos</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Pedido</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Cotización</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Factura</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">4. Nueva Cotización</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">5. Nuevo Pedido</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">6. Caja</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">7. Productos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">8. Entrada de Inventario</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">9. Entrada de Inventario</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">10. Transferencia de Inventario</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">11. Orden de Taller</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">12. Ticket de Servicio</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">13. Orden de Mantenimiento</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">14. Buscar</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">15. Acceso Directo 1</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">16. Acceso Directo 2</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">17. Acceso Directo 3</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">18. Acceso Directo 4</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">19. Acceso Directo 5</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">20. Acceso Directo 6</a>
+                </div>
+            </div>
+			
+
+
+            <!-- Configuración (Al fondo) -->
+            <div class="sidebar-dropdown mt-auto pt-2 border-t border-slate-200">
+                <button class="w-full sidebar-item flex items-center justify-between p-2 rounded-lg text-slate-700 font-medium cursor-pointer">
+                    <span class="flex items-center space-x-3"><span class="text-base">⚙️</span> <span>Configuración</span></span>
+                    <span class="text-[10px] text-slate-400">▼</span>
+                </button>
+                <div class="hidden pl-8 py-1 space-y-1 bg-slate-50 rounded-md my-1 border-l-2 border-blue-500 max-h-60 overflow-y-auto">
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Empresa</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Sucursales</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">Usuarios</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">4. Roles y Permisos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">5. Configuración General</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">6. Monedas</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">7. Impuestos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">8. Series / Numeraciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">9. Métodos de Pago</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">10. Cajas</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">11. Bancos</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">12. Almacenes</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">13. Impresoras</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">14. Facturación</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">15. Notificaciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">16. Seguridad</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">17. Integraciones</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">18. Copias de Seguridad</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">19. Auditoría</a>
+                    <a href="#" class="block py-1 text-slate-600 hover:text-blue-600 font-medium">20. Configuración de Módulos</a>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- ÁREA DE TRABAJO -->
+        <main class="flex-1 p-6 overflow-y-auto bg-slate-100">
+            <div class="max-w-7xl mx-auto space-y-6">
+                <div class="flex justify-between items-center">
+                    <h1 class="text-xl font-bold text-slate-800">Panel de Control - TMS Profesional</h1>
+                    <span class="text-xs bg-blue-100 text-blue-700 font-semibold px-2.5 py-1 rounded-full">Plan B2: Tienda de Muebles</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
+                        <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Ventas de Hoy</h3>
+                        <div class="mt-2 flex justify-between items-baseline">
+                            <span class="text-2xl font-bold text-slate-800">RD$ 45,500</span>
+                            <span class="text-xs text-emerald-600 font-medium">+12% vs ayer</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
+                        <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Cuentas por Cobrar</h3>
+                        <div class="mt-2 flex justify-between items-baseline">
+                            <span class="text-2xl font-bold text-slate-800">RD$ 180,200</span>
+                            <span class="text-xs text-amber-600 font-medium">18 facturas</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
+                        <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Inventario Crítico</h3>
+                        <div class="mt-2 flex justify-between items-baseline">
+                            <span class="text-2xl font-bold text-rose-600">5 Ítems</span>
+                            <span class="text-xs text-slate-500 font-medium">Sin existencia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs">
+                        <h3 class="text-sm font-bold text-slate-800 mb-4">Comportamiento de Ventas (Semana)</h3>
+                        <div class="relative h-64">
+                            <canvas id="salesChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs">
+                        <h3 class="text-sm font-bold text-slate-800 mb-4">Estado del Inventario por Categoría</h3>
+                        <div class="relative h-64">
+                            <canvas id="inventoryChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs">
+                    <h3 class="text-sm font-bold text-slate-800 mb-4">Flujo Financiero: Ingresos vs. Egresos (Últimos Meses)</h3>
+                    <div class="relative h-72">
+                        <canvas id="financialChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const dropdowns = document.querySelectorAll(".menu-dropdown");
+            let menuAbierto = false;
+
+            function cerrarTodos() {
+                dropdowns.forEach(d => {
+                    const m = d.querySelector(".absolute");
+                    m.classList.add("hidden");
+                    // Quitamos el estilo inline de posicionamiento fijo
+                    m.style.position = "";
+                    m.style.top = "";
+                    m.style.left = "";
+                });
+            }
+
+            function posicionarYAbrir(dropdown, menu) {
+                const btnRect = dropdown.querySelector("button").getBoundingClientRect();
+                // Sacamos el menú del flujo del header usando position fixed,
+                // así el overflow-x-auto del header ya no lo recorta.
+                menu.style.position = "fixed";
+                menu.style.top = btnRect.bottom + "px";
+                menu.style.left = btnRect.left + "px";
+                menu.classList.remove("hidden");
+            }
+
+            dropdowns.forEach(dropdown => {
+                const button = dropdown.querySelector("button");
+                const menu = dropdown.querySelector(".absolute");
+
+                // Al poner el ratón encima: solo abre si ya hay un menú abierto mediante clic previo
+                dropdown.addEventListener("mouseenter", () => {
+                    if (menuAbierto) {
+                        cerrarTodos();
+                        posicionarYAbrir(dropdown, menu);
+                    }
+                });
+
+                // Al hacer clic: despliega o cierra y activa el modo de navegación por hover
+                button.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    const estaOculto = menu.classList.contains("hidden");
+
+                    cerrarTodos();
+
+                    if (estaOculto) {
+                        posicionarYAbrir(dropdown, menu);
+                        menuAbierto = true;
+                    } else {
+                        menuAbierto = false;
+                    }
+                });
+            });
+
+            // Cerrar menús al hacer clic fuera de la barra o de los menús abiertos
+            document.addEventListener("click", (e) => {
+                if (!e.target.closest("header") && !e.target.closest(".menu-dropdown .absolute")) {
+                    cerrarTodos();
+                    menuAbierto = false;
+                }
+            });
+
+            // Reposicionar/cerrar si la ventana cambia de tamaño
+            window.addEventListener("resize", cerrarTodos);
+
+            // --- BARRA LATERAL (acordeón) ---
+            const sidebarDropdowns = document.querySelectorAll(".sidebar-dropdown");
+            sidebarDropdowns.forEach(item => {
+                const button = item.querySelector("button");
+                const submenu = item.querySelector(":scope > div");
+                const flecha = button.querySelector("span:last-child");
+
+                button.addEventListener("click", () => {
+                    const estaOculto = submenu.classList.contains("hidden");
+                    submenu.classList.toggle("hidden");
+                    if (flecha) {
+                        flecha.textContent = estaOculto ? "▲" : "▼";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

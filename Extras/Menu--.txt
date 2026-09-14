@@ -1,0 +1,347 @@
+
+	
+
+TMS PROFESIONAL
+│
+├── 🏠 Dashboard
+│
+├── 💰 Ventas
+│
+├── 🛒 Compras
+│
+├── 💳 Créditos
+│
+├── 💵 Finanzas
+│
+├── 📦 Inventario
+│
+├──    Taller
+│
+├──    Servicio al Cliente
+│
+├──    Mantenimiento
+│
+├── 👥 Recursos Humanos
+│
+├── ⚙️ Configuración
+│
+├── 📊 Informes / Reportes
+│
+├── 🧩 Addons
+│
+└── ❓ Ayuda
+
+vamos a trabajar el frontep para darle un giro espectacular, voy a pasarte el esquema del menu para que lo trabajes asi:
+==========================================
+DASHBOARD
+│
+├── 1. VENTAS
+│   ├── Ventas de Hoy
+│   ├── Ventas del Mes
+│   └── Productos Más Vendidos
+│
+├── 2. FINANZAS
+│   ├── Ingresos del Mes
+│   ├── Gastos del Mes
+│   ├── Cuentas por Cobrar
+│   ├── Cuentas por Pagar
+│   └── Caja de Hoy
+│
+├── 3. INVENTARIO
+│   ├── Existencias
+│   ├── Inventario Bajo
+│   └── Sin Existencia
+│
+├─── 4. ALERTAS
+│     ├── Avisos
+│     └── Mensajes
+│ 
+├── 3. INVENTARIO
+│   ├── Existencias
+│   ├── Inventario Bajo
+│   └── Sin Existencia
+│
+└──4. INVENTARIO
+   ├── Grafico Ventas
+   ├── Grafico Cliente 
+   ├── Grafico Inventario
+   └── Grafico Resultados
+
+==========================================
+VENTAS
+│
+├── 1. Clientes
+│
+├── 2. Pedidos
+│
+├── 3. Cotizaciones
+│
+├── 4. Facturas
+│
+├── 5. Devoluciones
+│
+├── 6. Notas de Crédito
+│
+├── 7. Entregas
+│
+├── 8. Órdenes de Taller / Garantías
+│
+├── 9. Vendedores
+│
+├── 10. Descuentos / Promociones
+│
+└── 11. Informes de Ventas
+==========================================
+COMPRAS
+│
+├── 1. Proveedores
+│
+├├──2. Órdenes de Compra
+│
+├── 3. Cotizaciones de Proveedores
+│
+├── 4. Entrada de Mercancías
+│
+├── 5. Facturas de Compra
+│
+├── 6. Devoluciones a Proveedores
+│
+├── 7. Notas de Crédito de Proveedores
+│
+├── 8. Gastos de Compra
+│
+├── 9. Compras Recurrentes
+│
+├── 10. Informes de Compras
+==========================================
+CRÉDITOS
+│
+├── 1. Solicitudes de Crédito
+├── 2. Créditos
+├── 3. Cuotas / Calendario de Pagos
+├── 4. Cobros
+├── 5. Cuentas por Cobrar
+├── 6. Acuerdos de Pago
+├── 7. Refinanciamientos
+├── 8. Créditos Cancelados
+├── 9. Garantes
+├── 10. Garantías / Colaterales
+├── 11. Cobradores
+└── 12. Informes de Créditos
+==========================================
+FINANZAS
+│
+├── 1. Cajas
+├── 2. Bancos
+├── 3. Cuentas Bancarias
+├── 4. Ingresos
+├── 5. Egresos
+├── 6. Transferencias
+├── 7. Conciliación Bancaria
+├── 8. Cuentas por Cobrar
+├── 9. Cuentas por Pagar
+├── 10. Gastos
+├── 11. Presupuestos
+├── 12. Préstamos
+├── 13. Activos
+├── 14. Pasivos
+├── 15. Patrimonio
+├── 16. Contabilidad
+├───17. Informes Financieros
+==========================================
+INVENTARIO
+│
+├── 1. Productos
+├── 2. Categorías
+├── 3. Marcas
+├── 4. Unidades de Medida
+├── 5. Almacenes
+├── 6. Entradas
+├── 7. Salidas
+├── 8. Transferencias
+├── 9. Ajustes de Inventario
+├── 10. Inventario Físico
+├── 11. Lotes
+├── 12. Números de Serie
+├── 13. Vencimientos
+├── 14. Kardex
+├── 15. Precios
+├── 16. Inventario Mínimo / Máximo
+├── 17. Productos Dañados / Perdidos
+└── 18. Informes de Inventario
+==========================================
+TALLER
+│
+├── 1. Clientes ( este modulo o sub modulo debe conectar con los mismos clientes │                 de del memu de ventas[la misma tabla de la base de datos])
+├── 2. Equipos / Vehículos
+├── 3. Órdenes de Taller
+├── 4. Diagnósticos
+├── 5. Servicios
+├── 6. Repuestos / Materiales
+├── 7. Técnicos
+├── 8. Estados de Reparación
+├── 9. Garantías
+├── 10. Presupuestos
+├── 11. Recepción 
+├── 12. Entrega
+├── 13. Seguimiento de Reparaciones
+├── 14. Historial de Servicios
+├── 15. Costos de Reparación
+├── 16. Fotos / Evidencias
+└── 17. Informes de Taller
+==========================================
+SERVICIO AL CLIENTE
+│
+├── 1. Clientes
+├── 2. Consultas
+├── 3. Solicitudes
+├── 4. Tickets / Casos
+├── 5. Quejas y Reclamos
+├── 6. Sugerencias
+├── 7. Garantías
+├── 8. Devoluciones
+├── 9. Seguimiento
+├── 10. Tareas / Compromisos
+├── 11. Estados y Prioridades
+├── 12. Historial de Atención
+└── 13. Informes de Servicio al Cliente
+==========================================
+MANTENIMIENTO
+│
+├── 1. Activos / Equipos
+├── 2. Categoria/Grupos
+├── 3. Mantenimiento Preventivo
+├── 4. Mantenimiento Correctivo
+├── 5. Órdenes de Mantenimiento
+├── 6. Programación de Mantenimiento
+├── 7. Técnicos / Responsables
+├── 8. Repuestos / Materiales
+├── 9. Servicios Externos
+├── 10. Historial de Mantenimiento
+├── 11. Costos de Mantenimiento
+├── 12. Garantías
+├── 13. Alertas / Próximos Mantenimientos
+└── 14. Informes de Mantenimiento
+
+==========================================
+RECURSOS HUMANOS
+│
+├── 1. Empleados
+├── 2. Departamentos
+├── 3. Puestos
+├── 4. Contratos
+├── 5. Expedientes
+├── 6. Asistencia
+├── 7. Horarios / Turnos
+├── 8. Permisos / Ausencias
+├── 9. Vacaciones
+├── 10. Nómina
+├── 11. Comisiones
+├── 12. Préstamos a Empleados
+├── 13. Deducciones
+├── 14. Bonificaciones
+├── 15. Evaluaciones
+├── 16. Capacitaciones
+├── 17. Documentos
+├── 18. Liquidaciones
+├── 19. Historial Laboral
+└── 20. Informes de Recursos Humanos
+
+==========================================
+CONFIGURACIÓN
+│
+├── 1. Empresa
+├── 2. Sucursales
+├── 3. Usuarios
+├── 4. Roles y Permisos
+├── 5. Configuración General
+├── 6. Monedas
+├── 7. Impuestos
+├── 8. Series / Numeraciones
+├── 9. Métodos de Pago
+├── 10. Cajas
+├── 11. Bancos
+├── 12. Almacenes
+├── 13. Impresoras
+├── 14. Facturación
+├── 15. Notificaciones
+├── 16. Seguridad
+├── 17. Integraciones
+├── 18. Copias de Seguridad
+├── 19. Auditoría
+└── 20. Configuración de Módulos
+==========================================
+ADDONS
+│
+├── 1. Tienda de Addons
+├── 2. Mis Addons
+├── 3. Addons Instalados
+├── 4. Addons Disponibles
+├── 5. Actualizaciones
+├── 6. Integraciones
+├── 7. API
+├── 8. Importar / Exportar
+├── 9. Plantillas
+└── 10. Informes de Addons
+==========================================
+INFORMES / REPORTES
+│
+├── 1. Ventas
+├── 2. Compras
+├── 3. Inventario
+├── 4. Créditos
+├── 5. Finanzas
+├── 6. Recursos Humanos
+├── 7. Taller
+├── 8. Servicio al Cliente
+├── 9. Mantenimiento
+├── 10. Clientes
+├── 11. Proveedores
+├── 12. Productos
+├── 13. Impuestos
+├── 14. Contabilidad
+├── 15. Auditoría
+├── 16. Reportes Personalizados
+├── 17. Reportes Programados
+└── 18. Exportar Reportes
+==========================================
+AYUDA
+│
+├── 1. Centro de Ayuda
+├── 2. Guías y Tutoriales
+├── 3. Preguntas Frecuentes
+├── 4. Soporte Técnico
+├── 5. Contactar Soporte
+├── 6. Novedades y Actualizaciones
+├── 7. Atajos de Teclado
+├── 8. Documentación
+├── 9. Reportar un Problema
+├── 10. Solicitar una Función
+└── 11. Acerca de TMS Profesional
+==========================================
+ACCESOS DIRECTOS
+│
+├── 1. Pedifo
+├── 2. Cotizacion
+├── 3. Factura
+├── 4. Nueva Cotización
+├── 5. Nuevo Pedido
+├── 6. Caja
+├── 7. Productos
+├── 8. Entrada de Inventario
+├── 9. Entrada de Inventario
+├── 10. Transferencia de Inventario
+├── 11. Orden de Taller
+├── 12. Ticket de Servicio
+├── 13. Orden de Mantenimiento
+├── 14. Buscar
+├── 15. Acceso Directo 1
+├── 16. Acceso Directo 2
+├── 17. Acceso Directo 3 
+├── 18. Acceso Directo 4
+├── 19. Acceso Directo 5
+└── 20. Acceso Directo 6
+==========================================
+
+
+	

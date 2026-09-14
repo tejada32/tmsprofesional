@@ -1,0 +1,82 @@
+Módulos del Sistema Creados
+Autenticación y Control de Usuarios: Gestión centralizada de usuarios multi-empresa, roles administrativos, subroles y portal de acceso para clientes (users, user_companies, customer_portal_users).
+
+Facturación Electrónica: Emisión de comprobantes fiscales electrónicos (e-NCF), control de tipos de e-CF, cálculo de impuestos, firma digital y seguimiento de estados ante la DGII (electronic_invoices).
+
+Finanzas y Transacciones: Gestión de cuentas por cobrar/pagar, transacciones financieras, cuotas de pagos fraccionados y opciones de financiamiento interno o bancario (account_transactions, account_installments, credits).
+
+Recursos Humanos y Nómina: Administración de planillas, cálculo de salarios por períodos (quincenales/mensuales), deducciones legales, bonificaciones, anticipos y control de préstamos a empleados (payrolls, payroll_details, employee_loans, employees).
+
+Restaurantes y Gastronomía (POS Avanzado): Control de salones y mesas, comandas de órdenes, cuentas abiertas por mesa, escandallos y recetas, además del sistema completo de registro, cobro y distribución de propinas (restaurant_tables, order_tickets, recipe_items, table_accounts, tables, tips, tip_payouts, tip_payout_batches, tip_records).
+
+Inventario, Lotes y Proveedores: Registro de compras, recepción de mercancías, control de lotes con fechas de caducidad y administración de proveedores (suppliers, purchases, purchase_items, product_batches).
+
+Citas y Agendamiento: Módulo de reservas y programación de citas con control de horarios, profesionales asignados y estados de atención (appointments).
+
+Flota y Transporte: Gestión de vehículos corporativos o de reparto, capacidades de carga, especificaciones de motor y detalles operativos (vehicles).
+
+Seguros y Pólizas: Administración de compañías aseguradoras, registro de pólizas de clientes, vigencias y montos de primas (insurance_companies, insurance_policies).
+
+Garantías y Reclamaciones: Registro de garantías de productos, auditorías de daños (defectos de fábrica, mal uso, transporte), notas de diagnóstico y resoluciones (warranties, warranty_claims).
+
+Planes y Suscripciones (SaaS): Estructura multi-tenant para control de planes de suscripción, límites de sucursales, bodegas y habilitación dinámica de módulos (subscription_plans).
+
+Gestión de Terceros y CRM: Directorio unificado de clientes, direcciones de entrega, geolocalización y datos de contacto de terceros (customers, third_parties).
+
+Categorías y Subcategorías de Negocios Soportadas
+Gastronomía y Hostelería
+
+Restaurantes de servicio completo / a la carta
+
+Bares, discotecas y centros nocturnos
+
+Cafeterías, reposterías y panaderías
+
+Comida rápida y servicios de Food Trucks
+
+Comercio y Retail
+
+Minimarkets, tiendas de conveniencia y abastos
+
+Tiendas de indumentaria, calzado y accesorios
+
+Ferreterías y comercios de materiales de construcción
+
+Distribuidoras y comercios mayoristas
+
+Servicios Profesionales y de Citas
+
+Clínicas, centros médicos y consultorios especializados
+
+Salones de belleza, spas y centros de estética integral
+
+Talleres de servicio técnico, automotriz y reparaciones
+
+Logística, Distribución y Transporte
+
+Empresas de transporte de carga y mercancías
+
+Servicios de envíos, encomiendas y reparto de última milla
+
+Seguros, Finanzas y Servicios Corporativos
+
+Corredurías y agencias de corretaje de seguros
+
+Financieras, cooperativas y administradoras de créditos corporativos
+
+------------------------------------------------------------------
+Tomando como referencia el alcance de un sistema ERP integral y el enfoque de Proyecto Software "TMS Profesional", suelen identificarse algunos módulos clave que podrían faltar o que vale la pena evaluar según el modelo de negocio específico (especialmente si "TMS" abarca la gestión de transporte o logística):
+
+Módulo de Rutas, Despachos y Viajes (Trip & Route Management): Indispensable si el sistema apunta a transporte o logística; permite la planificación de rutas, asignación de conductores/unidades a viajes específicos, control de manifiestos de carga y seguimiento de entregas en tiempo real.
+
+Módulo de Mantenimiento de Flota y Talleres: Control de órdenes de trabajo para reparaciones mecánicas, seguimiento de mantenimientos preventivos (por kilometraje u horas), consumo de repuestos y llantas para los vehículos.
+
+Contabilidad General (Libro Mayor): Aunque ya cuentas con transacciones financieras, cuentas por cobrar/pagar y nómina, un ERP robusto suele requerir un módulo contable formal con plan de cuentas (catálogo), asientos contables automáticos, libro diario, balance general y estado de resultados.
+
+Módulo de Cotizaciones y Pedidos de Venta (Sales Orders): Tienes la facturación electrónica (electronic_invoices), pero a menudo se necesita una etapa previa de cotizaciones, órdenes de venta y notas de entrega antes de emitir el comprobante fiscal.
+
+Módulo de Activos Fijos: Control, depreciación y ubicación de los bienes de la empresa (maquinaria, equipos de computación, mobiliario, etc.).
+
+Gestión Avanzada de Almacenes (Multi-bodega y Ubicaciones): Si manejas múltiples centros de distribución, un control detallado de pasillos, estanterías y ubicaciones (rack/bin) dentro del inventario.
+
+¿El enfoque principal de "TMS Profesional" está más orientado hacia la logística/transporte, o funciona como un ERP comercial genérico multi-industria?

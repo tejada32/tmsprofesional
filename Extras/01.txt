@@ -1,0 +1,187 @@
+mas cosas me gustaria agregar:Depocitos,cuentas, arqueos de cuenta,gastos, recursos humanos,nomina,para futuro contabilidad,,catalogo de cuentas y pensar en catalogos de cuentas contables deotros paises y todo lo necesario de la contabilidad
+
+Adaptadores de Facturación Electrónica por País:
+Multimoneda y Tipos de Cambio:
+Retenciones de Impuestos (IVA / Renta):
+Control de Créditos y Cuentas por Cobrar (Aging of Accounts / Antigüedad de Saldos):
+Integración con Pasarelas de Pago Locales y Pagos QR:
+Control de Lotes y Fechas de Vencimiento (Crucial para Farmacias y Alimentos):
+Modo Offline (Funcionalidad Sin Conexión a Internet):
+
+un sistema que funcionara cuando este listo en la nuve, con acceso via web, app android, luego a futuro app apple, habra una app de pc, la app de pc y la app de celular tendra facilidad para facturar con o sin internet,pudiendo sincronizarse cuando tenga internet
+
+el sistema debe poder funcionar con diferentes tipos de negocios como: muebleria, tienda de celulares, tienda de computadoras y equipos electricos, en estos 2 ultimos negocios incorporar los seriales, mac addres cuando aplique,que las tiendas tengan un taller con manejo de inventario taller y registro de equipos en taller con status por ejemlo en reparacion/listo etc,poder facturar las reparaciones, agregar piezas para cobrar,ventas combo por ejemplo el huevo unidad y el carton que son 30 huevos,los creditos inclyendo incial, cuotas con o sin interes, que incluya plazos ya marcados pero que permita agregarmas, posiblidad de compañia de seguros que incluya imagenes para guardar en el perfil de los clients
+compañia de prestamos, empleados como vendedores, cobradores, cajeros, comisiones por ventas o cobros, comision por trabajo tecnico en taller, modulos de servicio al clientes para manejar garantias y que el sistema maneje las garantias
+
+factuacion electronica domincana y de otros paises de america latina, que se pueda elegir entre compañia formal con impuesto o no, reportes dgii y comprovantes electronicos en el caso de republica dom,exportar documentos para enviar por whatsapp y por email por ejemplo cotizciones, facturas y recibos, modulos de recursos humanos, el sistema debe ser multi compañia, que al inicio el cliente elija el tipo de negocio y si usara o no los impuestos del pais que seleccione, incluir compañias como restaurantes que maneja pedidos  con delivery, mesas turno, compañias tipo supermercado, colmado, almacen, un vendedor externo, varios almacenes, por ejemplo un vendedor que se le transfiera los articulos en el vehiculo y que al vender se descuente del inventario en el vehiculo, cotizaciones, pedidos, salidas, entradas, modulos de compras completo
+
+el sistema debe estar escalable para agregar funciones para negocios especificos o un pais en especifico
+funciones que tu me recomiendes para estar a la altura de sofware como alegra que se integra con todo practiamente, la idea es buscar publico de toda america latina, tamnbien el software debe funcionar por suscricion: que el cliente haga un pago mensual o anual por el uso, que se pueda vender con funciones especificas
+si algo importante me falta por favor dime,sino iremos incorporando en el proceso
+
+
+----------------------------------------------------------------------------
+4. Sea observador. Pregúntese:
+
+“¿Qué está haciendo la persona en este momento? ¿En qué estará pensando?”.
+
+“¿Qué me dicen su ropa, su apariencia y su vivienda sobre sus creencias o su cultura?”.
+
+“¿Es un buen momento para conversar?”.
+
+-------------------------------------------------
+4. Empiece conversaciones
+(3 mins.) PREDICACIÓN PÚBLICA. (lmd lección 1 punto 4).
+
+
+-------------------------
+
+
+La Compañía de Seguros y Perfil del Cliente con Carga de Imágenes (ideal para respaldar contratos y documentos de identidad).
+
+Facturación Electrónica y Reportes DGII / Comprobantes Fiscales (específico para la República Dominicana y adaptado a LATAM).
+
+Módulo de Comisiones y Empleados (vendedores, cobradores, cajeros y técnicos de taller).
+
+
+
+repair-order.entity.ts,este archivo ya lo tenia tu me lo habias preparado, mira como esta a ver cual version es mejor si la nueva o la anterior
+
+Codigo Anterior:
+
+// src/entities/repair-order.entity.ts
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+
+export enum RepairStatus {
+  RECEIVED = 'RECEIVED',         // Recibido en tienda
+  IN_REPAIR = 'IN_REPAIR',       // En banco de trabajo / reparación
+  WAITING_PARTS = 'WAITING_PARTS', // Esperando repuestos del inventario o proveedor
+  READY = 'READY',               // Listo para entregar al cliente
+  DELIVERED = 'DELIVERED',       // Entregado y cerrado
+  CANCELLED = 'CANCELLED',       // Cancelado
+}
+
+@Entity('repair_orders')
+export class RepairOrder {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @Column({ type: 'varchar', length: 50, unique: true })
+  ticketNumber: string; // Ej: TALLER-2026-0001
+
+  @Column({ type: 'uuid' })
+  clientId: string; // Cliente dueño del equipo
+
+  @Column({ type: 'uuid' })
+  branchId: string; // Sucursal donde se recibe
+
+  @Column({ type: 'uuid', nullable: true })
+  technicianId: string; // Empleado técnico asignado
+
+  @Column({ type: 'varchar', length: 100 })
+  deviceType: string; // Ej: "Laptop Dell Inspiron", "iPhone 14 Pro"
+
+  @Column({ type: 'varchar', length: 100, nullable: true })
+  serialNumber: string; // Serial único o MAC Address (clave para tecnología y electrónicos)
+
+  @Column({ type: 'text' })
+  problemDescription: string; // Falla reportada por el cliente
+
+  @Column({ type: 'text', nullable: true })
+  aestheticCondition: string; // Notas físicas iniciales (ej: "Rayas leves en pantalla, sin cargador")
+
+  @Column({ type: 'text', nullable: true })
+  technicalNotes: string; // Diagnóstico o notas del técnico durante el proceso
+
+  @Column({ 
+    type: 'enum', 
+    enum: RepairStatus, 
+    default: RepairStatus.RECEIVED 
+  })
+  status: RepairStatus;
+
+  @Column({ type: 'jsonb', default: [] })
+  partsUsed: Array<{
+    productId: string;
+    productName: string;
+    quantity: number;
+    unitPrice: number;
+  }>; // Piezas o repuestos consumidos del inventario
+
+  @Column({ type: 'decimal', precision: 10, scale: 2, default: 0.00 })
+  laborCost: number; // Costo de la mano de obra técnica
+
+  @Column({ type: 'decimal', precision: 10, scale: 2, default: 0.00 })
+  totalAmount: number; // Total general (Repuestos + Mano de obra)
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+}
+
+Codigo Nuevo:
+
+// src/entities/repair-order.entity.ts
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+
+export enum RepairStatus {
+  DIAGNOSIS = 'DIAGNOSIS',         // En diagnóstico / revisión
+  WAITING_PARTS = 'WAITING_PARTS', // Esperando piezas o repuestos
+  IN_PROGRESS = 'IN_PROGRESS',     // En reparación activa
+  READY = 'READY',                 // Listo para entregar
+  DELIVERED = 'DELIVERED',         // Entregado al cliente
+  CANCELLED = 'CANCELLED',         // Cancelado
+}
+
+@Entity('repair_orders')
+export class RepairOrder {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @Column({ type: 'uuid' })
+  companyId: string;
+
+  @Column({ type: 'uuid' })
+  clientId: string;
+
+  @Column({ type: 'uuid', nullable: true })
+  technicianId: string; // Vinculado al módulo de empleados que creamos antes
+
+  @Column({ type: 'varchar', length: 150 })
+  deviceModel: string; // Ej: "iPhone 13 Pro", "Laptop Lenovo ThinkPad"
+
+  @Column({ type: 'varchar', length: 100, unique: true, nullable: true })
+  serialNumberOrMac: string; // Número de serie o MAC Address para control y garantías
+
+  @Column({ type: 'text' })
+  problemDescription: string; // Descripción del fallo reportado por el cliente
+
+  @Column({ type: 'text', nullable: true })
+  technicalDiagnosis: string; // Diagnóstico realizado por el técnico
+
+  @Column({ type: 'decimal', precision: 12, scale: 2, default: 0 })
+  estimatedCost: number; // Costo estimado de la reparación
+
+  @Column({ type: 'decimal', precision: 12, scale: 2, default: 0 })
+  finalCost: number; // Costo final de la reparación
+
+  @Column({ 
+    type: 'enum', 
+    enum: RepairStatus, 
+    default: RepairStatus.DIAGNOSIS 
+  })
+  status: RepairStatus;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+}
+
+
+
+
+

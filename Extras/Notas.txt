@@ -1,0 +1,262 @@
+compañia  :Julian JS
+email     :info@julian.com
+contraseña:pass2020
+----------------------------------------------------------------
+compañia  :Julian JR
+email     :info@julianjr.com
+contraseña:pass2020
+---------------------------------------------------
+compañia  :Manga JR
+email     :info@mangajr.com
+contraseña:pass2020
+-------------------
+Nombre    :Toño Fernandez 
+compañia  :T Huevos SRL
+email     :info@thuevos.com
+contraseña:pass2020
+Vendedor Independiente
+---------------------
+Nombre    :Juan Fernandez 
+compañia  :Ferreteria Fernandez SRL
+email     :info@ffernandez.com
+contraseña:pass2020
+Ferreteria
+Telefono: 8092755555
+---------------------
+Nombre    :Juan Vilorio
+email     :info@cvilorio.com 
+Telefono  :8092755556
+contraseña:pass2020
+compañia  :Colmado Vilorio SRL
+Colmado / Minimarket
+
+---------------------
+Nombre    :Juan Francisco
+email     :info@jf.com 
+Telefono  :8092755557
+contraseña:pass2020
+compañia  :JF Muebles SRL
+Categoria :Tienda de Muebles
+Plan      : Trial0/*09/2026--11:00pm
+---------------------
+Nombre    :Sachi Perez
+email     :info@Perez.com 
+Telefono  :8092755558
+contraseña:pass2020
+compañia  :SH Muebles SRL
+Categoria :Tienda de Muebles
+
+---------------------
+Nombre    :Victor Perez
+email     :info@espejov.com 
+Telefono  :8092755559
+contraseña:pass2020
+compañia  :Espejo Muebles SRL
+Categoria :Tienda de Muebles
+
+---------------------
+Nombre    :Amauri Perez
+email     :info@mauro.com 
+Telefono  :8092755560
+contraseña:pass2020
+compañia  :Productos El Mauro SRL
+Categoria :Tienda de Muebles
+
+---------------------
+Nombre    :Pedro Lozano
+email     :info@plozano.com 
+Telefono  :8092755561
+contraseña:pass2020
+compañia  :pozano Muebles SRL
+Categoria :Tienda de Muebles
+
+---------------------
+Nombre    : Nolasco Ramirez
+email     : info@nnramirez.com 
+Telefono  : 8092755563
+contraseña: pass2020
+compañia  : Nolasco Muebles SRL
+Categoria : Tienda de Muebles
+
+---------------------
+Nombre    : Antonio Cabrera
+email     : info@acabrera.com 
+Telefono  : 8092755564
+contraseña: pass2020
+compañia  : Cabrera Comercial S.A.S.
+Categoria : Tienda de Muebles
+
+---------------------
+Nombre    : Pedro Picapiedra
+email     : info@pedropica.com 
+Telefono  : 8092755565
+contraseña: pass2020
+compañia  : Picapiedra Comercial S.A.S.
+Categoria : Tienda de Muebles
+
+---------------------
+Nombre    : Juan Marmol
+email     : info@jmarmol.com 
+Telefono  : 8092755566
+contraseña: pass2020
+compañia  : Marmol Comercial S.A.S.
+Categoria : Tienda de Muebles
+
+---------------------
+Nombre    : Sachi Marmol
+email     : info@smarmol.com 
+Telefono  : 8092755567
+contraseña: pass2020
+compañia  : Sachi Comercial S.A.S.
+Categoria : Tienda de Muebles
+
+---------------------
+Nombre    : Mary Marmol
+email     : info@mmarmol.com 
+Telefono  : 8092755568
+contraseña: pass2020
+compañia  : Mary Comercial S.A.S.
+Categoria : Tienda de Muebles
+
+---------------------
+Nombre    : Porfirio Gonzlez
+email     : info@pgonzalez.com 
+Telefono  : 8092755569
+contraseña: pass2020
+compañia  : Porfirio Comercial S.A.S.
+Categoria : Tienda de Muebles
+via el Front
+---------------------
+Nombre    : Fernando Gonzalez
+email     : info@fgonzalez.com 
+Telefono  : 8092755570
+contraseña: pass2020
+compañia  : Gonzalez Comercial S.A.S.
+Categoria : Tienda de Muebles
+via Power Shell
+---------------------
+{
+  "name": "Rafael González",
+  "email": "info@rgonzalez.com",
+  "phone": "8092755571",
+  "password": "pass2020",
+  "companyName": "Rafa Comercial S.A.S.",
+  "region": "Latam",
+  "country": "República Dominicana",
+  "userFunction": "Comerciante / Retail / Muebles",
+  "planType": "subscription",
+  "planCategory": "Tiendas",
+  "planSubcategory": "TD1",
+  "deviceUuid": "front-device-uuid-02"
+}
+---------------------------------------
+Nombre    : Maria Gonzalez
+email     : info@mgonzalez.com 
+Telefono  : 8092755571
+contraseña: pass2020
+compañia  : Gonzalez Muebles S.R.L.
+Categoria : Tienda de Muebles
+1 año
+---------------------
+Nombre    : Ignasio Rodriguez
+email     : info@irodriguez.com 
+Telefono  : 8092755572
+contraseña: pass2020
+compañia  : Toño Muebles S.R.L.
+Categoria : Tienda de Muebles
+
+---------------------
+Nombre    : Juana Rojas
+email     : info@jrojas.com 
+Telefono  : 8092755573
+contraseña: pass2020
+compañia  : Rojas Muebles S.R.L.
+Categoria : Tienda de Muebles
+
+---------------------
+---------------------
+Nombre    : Santa Tejada
+email     : info@stejada.com 
+Telefono  : 8092755574
+contraseña: pass2020
+compañia  : Santa Muebles S.R.L.
+Categoria : Tienda de Muebles
+
+---------------------
+Nombre    : Kelvin Nicasio
+email     : info@knicasio.com 
+Telefono  : 8092755575
+contraseña: pass2020
+compañia  : Nicasio Muebles S.R.L.
+Categoria : Tienda de Muebles
+
+{{---------------------------}}
+Nombre    : Kelvin Nicasio
+email     : info@knicasio.com 
+Telefono  : 8092805553
+contraseña: pass2020
+compañia  : Nicasio Muebles S.R.L.
+Categoria : Tienda de Muebles
+Pro, 1 Año 475.00
+
+----------------------------
+Crear Colaborador:
+Nombre:jose / Password:pass2020 / Cargo:Vendedor
+error: Localhost:5173 Says: Cannot POST /users/employees
+----------------------------
+Sucursal o Almacén:
+Nombre: Tienda Principal /Ubicacion o Direccion: Ave. 30 de Marzo /Tipo de Ubicacion : Sucursal(Punto de Venta)
+error: Localhost:5173 Says:El módulo [warehouses] no corresponde al giro de negocio (Tienda de muebles (Plan B2 - $50.00)) seleccionado por su empresa.
+---------------------------------------
+Inventario:
+Nombre: TV TCL 32 ABS32 /SKU:3025 /Precio: 12000 /requiere ensamblaje: false
+esta mal esta parte porque me pide poner dimenciones y peso, realmente para registrar un articulo no puede pedir esas cosas, sin embargo lo puse para ver si se guarda ; largo:12 / alto:12 /peso: 15
+-----------------------------------------------------------------------------------------
+Configuracion:
+tiempo limite inactividad web: 30 minutos
+no me dejo guardar porque deje campos vacios, esta parte debe permitir guardar si al menos lleno 1 campo, sino llena nada deberia decir algo asi no no cambio nada o ningun cambio para guardar, al guardar si solo debe llevar a la tabla los campos donde se escribio, no debe sustituir los campos dejados vacios
+
+---------------------------------------
+Proveedores:
+debe añadirse un campo para extencion, justo al lado de telefono(este debe ser opcional)
+error: Localhost:5173 Says: Cannot POST /suppliers
+---------------------------------------
+Clientes:
+Nombre:Jose Perez / Email: /Telefono: 809-583-0000 /RNC-Cedula-Tax ID:4021234567-8/Direccion: Santiago
+error: Localhost:5173 Says: Cannot POST /clients
+---------------------------------------
+POS (Punto de Venta):
+
+---------------------------------------
+
+------------------------------------------------------------------------------
+---------------------------------------
+
+
+Invoke-RestMethod -Uri http://localhost:3000/companies/register -rodMethod Post -ContentType "application/json" -Body '{"companyName": "Sachiman Comercial S.A.S.", "adminName": "Sachi Marmol", "adminEmail": "info@smarmol.com", "adminPhone": "8092755567", "adminPassword": "pass2020", "planSubcategory": "TD1"}'
+
+
+Proveedores y Compras (suppliers, purchases, purchase_items): Infraestructura base para la gestión de costos, entradas de mercancía y soporte para las cuentas por pagar.
+
+Recursos Humanos y Nómina (payrolls, payroll_details, vinculados a employees y employee_commissions).
+
+Gastos y Cuentas por Pagar (expenses, accounts_payable): Control de gastos operativos diarios y deudas pendientes con proveedores.
+
+Facturación Fiscal y Comprobantes (fiscal_sequences y control de numeraciones o impuestos por transacción).
+
+Activos Fijos (fixed_assets para la depreciación y control de equipos de alto valor).
+
+Notificaciones y Alertas (notifications para alertas automáticas y recordatorios del sistema).
+
+Módulos y Tablas Sectoriales Específicos:
+
+Restaurantes / Alimentos: restaurant_tables, kitchen_orders.
+
+Seguros: policies, claims.,
+
+Farmacias: prescriptions.
+
+Servicios Profesionales / Cuidado Personal: appointments, services.
+
+------------------------------------------------------
+

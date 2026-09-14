@@ -1,0 +1,99 @@
+esa estrucctura no se corresponde con lo que quiero,vamos a proponer como debe ir:
+
+mira esta estructura de categorias y sub categorias y dime si esta bien o que me sujieres
+
+1.Venta General
+2.Tiendas
+3.Tecnologia
+4.Alimentos y bebidas
+5.Prestamos
+6.Servicios profesionales
+7.Seguros
+8.Cuidado Personal
+9.Salud
+
+
+1. Venta General
+
+Vendedor independiente:POS mobile, acceso Web, reportes Basicos, 3 almacenes, ventas articulos combos y servicios, operaciones de actualizacion de almacen(entradas, salidas, conduces,transeferencia de almacen, cotizaciones, pedidos,activo fijo, creditos a 1 plaza solamente, abonos a facturas, reporte, exportar pdf y enviar facturas por email, poder enviar facturas por whatapp, Modulos de compras,solo oficina principal, puede incorporar 2 vehiculos como almacen, Manejo de impuesto pero sin factura electronica ni factura fiscal, Nomina basico, 3 Usuarios
+
+(Colmado/MiniMarket): POS mobile, acceso Web,aplicacion PC, reportes avanzados, 3 almacenes oficina Principal(2 Almacen en cada sucursal),
+5 Sucursales , ventas articulos combos y servicios, operaciones de actualizacion de almacen(entradas, salidas, conduces,transeferencia de almacen, cotizaciones, pedidos,activo fijo, creditos a 1 plazo solamente, abonos a facturas, reporte, exportar pdf y enviar facturas por email, poder enviar facturas por whatapp, Modulos de compras,solo oficina principal, puede incorporar 2 vehiculos como almacen, Manejo de Impuestos y facturacion electronica (opcional-se podra activar al inicio o luego en la configuracion)nomina Basico,Manejo de Delivery 5 en total
+
+(Almacén/Distribuidora):POS mobile, acceso Web,aplicacion PC, reportes avanzados, 3 almacenes oficina Principal(2 Almacen en cada sucursal),
+5 Sucursales , ventas articulos combos y servicios, operaciones de actualizacion de almacen(entradas, salidas, conduces,transeferencia de almacen, cotizaciones, pedidos,activo fijo, creditos a 1 plazo solamente, abonos a facturas, reporte, exportar pdf y enviar facturas por email, poder enviar facturas por whatapp, Modulos de compras,solo oficina principal, puede incorporar 5 vehiculos como almacen, Manejo de Impuestos y facturacion electronica (opcional-se podra activar al inicio o luego en la configuracion)nomina avanzado,Manejo de Delivery 5 en total,15 Usuarios, Manejo de Vendedores y cobradores, comisiones,Manejo de departamentos o pasillos en los almacenes
+
+
+Ferretería :POS mobile, acceso Web,aplicacion PC, reportes avanzados, 3 almacenes oficina Principal(2 Almacen en cada sucursal),
+5 Sucursales , ventas articulos combos y servicios, operaciones de actualizacion de almacen(entradas, salidas, conduces,transeferencia de almacen, cotizaciones, pedidos,activo fijo, creditos a 1 plazo solamente, abonos a facturas, reporte, exportar pdf y enviar facturas por email, poder enviar facturas por whatapp, Modulos de compras,solo oficina principal, puede incorporar 15 vehiculos como almacen, Manejo de Impuestos y facturacion electronica (opcional-se podra activar al inicio o luego en configuracion)nomina avanzado,Manejo de Delivery 5 en total,15 Usuarios, Manejo de Vendedores y cobradores, comisiones,Manejo de departamentos o pasillos en los almacenes
+
+2. Tiendas.
+Tienda de muebles:POS mobile, acceso Web,aplicacion PC, reportes avanzados, 3 almacenes oficina Principal(2 Almacen en cada sucursal),
+5 Sucursales , ventas articulos combos y servicios, operaciones de actualizacion de almacen(entradas, salidas, conduces,transeferencia de almacen, cotizaciones, pedidos,activo fijo, creditos a con muchas opciones de plazo  abonos a facturas,abonos a cuotas, creditos con inicial o sin inicial,, reporte, exportar pdf y enviar facturas por email, poder enviar facturas por whatapp, Modulos de compras, puede incorporar 15 vehiculos como almacen, Manejo de Impuestos y facturacion electronica (opcional-se podra activar al inicio o luego en configuracion)nomina avanzado,Manejo de Delivery 5 en total,20 Usuarios, Manejo de Vendedores y cobradores, comisiones,Manejo de departamentos o pasillos en los almacenes,ubicacion de los almacenes, Manejo de Seriales cuando sea necesario para ciertos electrodomesticos, Taller de Reparacion, Garantias,Modulo de Servicio al cliente, en productos mas detalles por ejemplo tipos de madera y otros que vamos a definir mas adelante,contabilidad avanzada
+
+Tienda por departamentos:POS mobile, acceso Web,aplicacion PC, reportes avanzados, 3 almacenes oficina Principal(2 Almacen en cada sucursal),
+5 Sucursales , ventas articulos combos y servicios, operaciones de actualizacion de almacen(entradas, salidas, conduces,transeferencia de almacen, cotizaciones, pedidos,activo fijo, creditos basicos, reporte, exportar pdf y enviar facturas por email, poder enviar facturas por whatapp, Modulos de compras, puede incorporar 15 vehiculos como almacen, Manejo de Impuestos y facturacion electronica (opcional-se podra activar al inicio o luego en configuracion)nomina avanzado,Manejo de Delivery 5 en total,20 Usuarios, Manejo de Vendedores y cobradores, comisiones,Manejo de departamentos o pasillos en los almacenes,ubicacion de los almacenes, Manejo de Seriales cuando sea necesario para ciertos electrodomesticos, Taller de Reparacion, Garantias,Modulo de Servicio al cliente,contabilidad avanzada
+
+Electrodomésticos:Tienda por departamentos:POS mobile, acceso Web,aplicacion PC, reportes avanzados, 3 almacenes oficina Principal(2 Almacen en cada sucursal),
+5 Sucursales , ventas articulos combos y servicios, operaciones de actualizacion de almacen(entradas, salidas, conduces,transeferencia de almacen, cotizaciones, pedidos,activo fijo, creditos a 1 plazo solamente, abonos a facturas, reporte, exportar pdf y enviar facturas por email, poder enviar facturas por whatapp, Modulos de compras, puede incorporar 15 vehiculos como almacen, Manejo de Impuestos y facturacion electronica (opcional-se podra activar al inicio o luego en configuracion),nomina avanzado,Manejo de Delivery 5 en total,20 Usuarios, Manejo de Vendedores y cobradores, comisiones,Manejo de departamentos o pasillos en los almacenes,ubicacion de los almacenes, Manejo de Seriales cuando sea necesario para ciertos electrodomesticos, Taller de Reparacion, Garantias,Modulo de Servicio al cliente,contabilidad avanzada
+
+Otros comercios similares: definir mas adelante
+
+3.Tecnologia
+Tienda de computadoras:5 Almacenes, 5 Tecnicos, 5 Vendedores, 2 Vehiculos como almacen, 15 Usuarios, 5 Sucursales, vendedores y cobradores, Comisiones, nomina avanzada,
+Ventas a Credito basico, taller de repacion, servcio al cliente y garantias, Tienda de celulares, Electrónica, Accesorios, Taller de reparación,Manejo de Impuestos y facturacion electronica (opcional-se podra activar al inicio o luego en configuracion),seriales, Mac Adrres en los articulos que lo lleven, contabilidad avanzada, manejo completo de inventario,compras,cotizaciones, transferencis, salidas, entradas, enviar por whatsppa o email,conduces, pedidos,Facturacion electronica, impuestos y factura fiscal
+
+Tienda de celulares/Electronica:5 Almacenes, 5 Tecnicos, 5 Vendedores, 15 Usuarios, 5 Sucursales, vendedores y cobradores, Comisiones, nomina basica,
+Ventas a Credito basico, taller de repacion, servcio al cliente y garantias, Tienda de celulares, Electrónica, Accesorios, Taller de reparación,Manejo de Impuestos y facturacion electronica (opcional-se podra activar al inicio o luego en configuracion),seriales, Mac Adrres en los articulos que lo lleven, contabilidad avanzada, manejo completo de inventario,compras,cotizaciones, transferencis, salidas, entradas, enviar por whatsppa o email,conduces, pedidos, Facturacion electronica, impuestos y factura fiscal
+
+Taller de reparación:Tienda de celulares:2 Almacenes, 10 Tecnicos, 3 Vendedores, 15 Usuarios, 5 Sucursales, vendedores y cobradores, Comisiones, nomina basica,
+Ventas a Credito basico,  Taller de reparación,Manejo de Impuestos y facturacion electronica (opcional-se podra activar al inicio o luego en configuracion),seriales, Mac Adrres en los articulos que lo lleven, contabilidad avanzada, manejo completo de inventario,compras,cotizaciones, transferencis, salidas, entradas, enviar por whatsppa o email,conduces, pedidos, Facturacion electronica, impuestos y factura fiscal
+
+4.Alimentos y Bebidas
+Restaurante: 2 Almacenes, 10 Tecnicos, 10 Meseros, 15 Usuarios, 5 Sucursales, Comisiones, nomina avanzada
+Manejo de Impuestos y facturacion electronica (opcional-se podra activar al inicio o luego en configuracion),contabilidad avanzada, manejo completo de inventario,compras,cotizaciones, transferencis, salidas, entradas, enviar por whatsppa o email,conduces, pedidos,Mesas,turnos, propinas, cocina, deliverys, platos, recetas
+ingredientes, deliverys
+
+cafeteria / comerdor: 2 Almacenes, 10 Tecnicos, 10 Meseros, 15 Usuarios, 5 Sucursales, Comisiones, nomina avanzada
+contabilidad avanzada, manejo completo de inventario,compras,cotizaciones, transferencis, salidas, entradas, enviar por whatsppa o email,conduces, pedidos,Mesas,turnos, propinas, cocina, deliverys, platos, recetas,ingredientes,deliverys
+
+5. Prestamos
+Prestamos: un inventario especial para cosas que toma en garantia, creditos tipo prestamos, cobradores,comisiones, 5 Usuarios, Reportes basicos
+Financiera: definir luego
+Cooperativa:definir luego
+
+6.Servicios Profesionales: Definir luego
+Instaladores : Definir luego
+Ingenieros y técnicos: Definir luego
+Abogados : Definir luego
+Contadores: Definir luego
+Consultores: Definir luego
+Otros servicios: Definir luego
+
+7.Seguros
+Seguros de vehículos: Definir luego
+Seguros personales: Definir luego
+Seguros empresariales: Definir luego
+
+8.Cuidado Personal: Definir luego
+Peluquería: Definir luego
+Salón de belleza: Definir luego
+Spa: Definir luego
+Estética/Uñas (Convinar estos 2): Definir luego
+
+9.Salud
+Farmacia: Definir luego
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,259 @@
+----Modulos----
+Autenticación (Auth): Gestión de la seguridad y guardias de autenticación basados en JWT.
+
+Empresas (Companies): Configuración de la estructura multi-tenant del sistema.
+
+Sucursales (Branches): Administración de las sucursales asociadas a las empresas.
+
+Almacenes (Warehouses): Control de inventarios y existencias por sucursal.
+
+Productos (Products): Catálogo y administración de artículos.
+
+Usuarios (Users): Administración de perfiles y accesos.
+
+Finanzas (Financial): Módulo para la gestión y control financiero.
+
+Reparaciones (Repairs): Gestión de órdenes y servicios de reparación.
+
+Ventas (Sales): Registro y control de transacciones comerciales de salida.
+
+Compras (Purchases): Administración de adquisiciones y abastecimiento.
+
+Cuentas por Pagar / Cobrar: Control de pasivos y créditos pendientes.
+
+Préstamos (Loans): Gestión de financiamientos y créditos internos.
+
+Turnos de Caja (Cashier Shifts): Apertura, seguimiento y cierre de cajas registradoras.
+
+Comisiones de Empleados: Cálculo de comisiones asociadas al personal.
+
+Propinas (Tips): Registro y distribución de propinas.
+
+Facturación Electrónica: Soporte integrado para la emisión de documentos fiscales electrónicos.
+
+
+Venta General (VG1 - VG4): Vendedor independiente ($10), Colmado/MiniMarket ($20), Almacén/Distribuidora ($30), Ferretería ($30).
+
+Tiendas (TD1 - TD4): Tienda de muebles ($50), Tienda por departamento ($50), Electrodomésticos ($50), Otros comercios similares ($40).
+
+Tecnología (TT01 - TT03): Tienda de computadora ($30), Tienda de celulares/Electronica ($30), Taller de reparación ($30).
+
+Alimentos y Bebidas (VA01 - VA02): Restaurante ($40), Cafetería / comedor ($20).
+
+Préstamos (PT01 - PT03): Préstamos ($30), Financiera ($30), Cooperativa ($30).
+
+Servicios Profesionales (SP01 - SP06): Instaladores ($20), Ingenieros y técnicos ($20), Abogados ($20), Contadores ($20), Consultores ($20), Otros servicios ($20).
+
+Seguros (SG01 - SG03): Seguros de vehículos ($40), Seguros personales ($40), Seguros empresariales ($40).
+
+Cuidado Personal (CP01 - CP04): Peluquería ($15), Salón de belleza ($15), Spa ($15), Estética/Uñas ($15).
+
+Salud (SL01): Farmacia ($35).
+
+-------------------------------------------------------------------------
+erp_saas_db-# \d public.subscription_plans
+                         Tabla ½public.subscription_plans╗
+    Columna     |       Tipo        | Ordenamiento | Nulable  |    Por omisi¾n
+----------------+-------------------+--------------+----------+--------------------
+ id             | uuid              |              | not null | uuid_generate_v4()
+ maxBranches    | integer           |              | not null | 0
+ maxWarehouses  | integer           |              | not null | 0
+ isActive       | boolean           |              | not null | true
+ allowedModules | text              |              |          |
+ category       | character varying |              |          |
+ sub_category   | character varying |              |          |
+ abbreviation   | character varying |              |          |
+ plan_name      | character varying |              |          |
+ price_usd      | numeric(10,2)     |              |          |
+═ndices:
+    "PK_9ab8fe6918451ab3d0a4fb6bb0c" PRIMARY KEY, btree (id)
+    "UQ_522c72158daa147242b908c94a9" UNIQUE CONSTRAINT, btree (abbreviation)
+Referenciada por:
+    TABLE "companies" CONSTRAINT "FK_f064aefc57172a8ac3f45e2359d" FOREIGN KEY ("subscriptionPlanId") REFERENCES subscription_plans(id) ON DELETE SET NULL
+
+
+erp_saas_db-#
+
+"id"	"maxBranches"	"maxWarehouses"	"isActive"	"allowedModules"	"category"	"sub_category"	"abbreviation"	"plan_name"	"price_usd"
+"006d95ec-39a6-4725-8341-90aed85fb238"	5	5	true		"Venta General"	"Almacén/Distribuidora"	"VG3"	"Plan A3"	30.00
+"064b496e-92e0-4f86-9b9a-a84c5101048c"	5	5	true		"Cuidado Personal"	"Spa"	"CP03"	"Plan A28"	15.00
+"080fa089-2881-4ec3-b305-b91cf0af5f40"	5	5	true		"Seguros"	"Seguros de vehículos"	"SG01"	"Plan G1"	40.00
+"0f38b3d0-410f-4412-a321-818243f7e54d"	5	5	true		"Cuidado Personal"	"Estética/Uñas"	"CP04"	"Plan A29"	15.00
+"11111111-1111-1111-1111-111111111111"	1	1	true	"branches"					
+"115f6a18-b4ec-48ce-9c30-5eb7ede4c844"	5	5	true		"Préstamos"	"Préstamos"	"PT01"	"Plan E1"	30.00
+"22222222-2222-2222-2222-222222222222"	5	3	true	"all"					
+"39055df6-e418-4d53-b0d2-cc583167d75f"	5	5	true		"Alimentos y Bebidas"	"Restaurante"	"VA01"	"Plan D1"	40.00
+"3b17c8e7-7c48-493b-90d2-b8d8e140236f"	5	5	true		"Seguros"	"Seguros empresariales"	"SG03"	"Plan G3"	40.00
+"3c0440f7-088a-4126-83f2-d3a6e6cc9f43"	5	5	true		"Servicios Profesionales"	"Instaladores"	"SP01"	"Plan F1"	20.00
+"4213d83a-7769-466b-a481-6c329652aa00"	5	5	true		"Tiendas"	"Tienda de muebles"	"TD1"	"Plan B2"	50.00
+"429cfc3b-09f2-429e-a10b-0a78c273834e"	5	5	true		"Servicios Profesionales"	"Otros servicios"	"SP06"	"Plan F6"	20.00
+"49c388f4-a889-4c85-96e4-0493192aeab8"	5	5	true		"Salud"	"Farmacia"	"SL01"	"Plan J1"	35.00
+"4a434ac3-814f-4c8f-872b-d50ca1300bb5"	5	5	true		"Tiendas"	"Otros comercios similares"	"TD4"	"Plan B5"	40.00
+"4b71bcea-6650-473c-85bc-70d5dcfdc376"	5	5	true		"Préstamos"	"Cooperativa"	"PT03"	"Plan E3"	30.00
+"505785dc-278d-49aa-a20c-b84abf97837f"	5	5	true		"Servicios Profesionales"	"Contadores"	"SP04"	"Plan F4"	20.00
+"62a47bc6-9b0e-47d4-95bc-2eda3e3be02d"	5	5	true		"Servicios Profesionales"	"Abogados"	"SP03"	"Plan F3"	20.00
+"6a2d2486-7b5b-4ea8-8d22-181ab69adba6"	5	5	true		"Venta General"	"Colmado/MiniMarket"	"VG2"	"Plan A2"	20.00
+"8187830b-7937-4931-91ad-47c89fb575a1"	5	5	true		"Tecnología"	"Taller de reparación"	"TT03"	"Plan C3"	30.00
+"8443fcd6-9406-4e0e-8cdf-38a19de26526"	5	5	true		"Seguros"	"Seguros personales"	"SG02"	"Plan G2"	40.00
+"868c3e00-cdd8-4dee-b51f-597e22e63d17"	5	2	true						
+"897f5ab2-36fb-4537-9b39-3b21f3f13a3a"	5	5	true		"Servicios Profesionales"	"Ingenieros y técnicos"	"SP02"	"Plan F2"	20.00
+"b3620650-4104-459d-ae1c-2409403211d0"	5	5	true		"Alimentos y Bebidas"	"Cafetería / comedor"	"VA02"	"Plan D2"	20.00
+"bd967de2-9295-4ace-be49-7fa022995679"	5	5	true		"Servicios Profesionales"	"Consultores"	"SP05"	"Plan F5"	20.00
+"c459f98a-699b-4345-8a54-928ffcbc45e0"	5	5	true		"Cuidado Personal"	"Peluquería"	"CP01"	"Plan H1"	15.00
+"d01a4403-40db-4c4e-80d3-9c9b102677f2"	5	5	true		"Cuidado Personal"	"Salón de belleza"	"CP02"	"Plan A27"	15.00
+"d1943c26-cd85-440e-9c00-bb962e77ed68"	5	5	true		"Préstamos"	"Financiera"	"PT02"	"Plan E2"	30.00
+"d95e2144-602f-42fd-a561-09d79d8e5556"	5	5	true		"Venta General"	"Vendedor independiente"	"VG1"	"Plan A1"	10.00
+"e1147b18-0ca4-4ffe-8e79-c22c765ef95b"	5	5	true		"Tecnología"	"Tienda de computadora"	"TT01"	"Plan C1"	30.00
+"e2072039-98b5-47e7-abf0-bd37c6b111ab"	5	5	true		"Tiendas"	"Electrodomésticos"	"TD3"	"Plan B4"	50.00
+"e835ce18-c6c6-43b0-ae13-373dbed490e8"	5	5	true		"Tiendas"	"Tienda por departamento"	"TD2"	"Plan B3"	50.00
+"f3d1c57b-5529-4c55-a57c-442d99366a1e"	5	5	true		"Venta General"	"Ferretería"	"VG4"	"Plan B1"	30.00
+"fed0fbac-6fdc-46ad-a129-41b05947ef25"	5	5	true		"Tecnología"	"Tienda de celulares/Electronica"	"TT02"	"Plan C2"	30.00
+
+---------------------------------------------------------------------------------------------------------------------
+
+1. Módulos del Sistema
+El ERP cuenta con 16 módulos principales que gestionan la operación multi-tenant:
+
+Auth: Gestión de seguridad y autenticación basada en JWT.
+
+Companies: Configuración de la estructura multi-tenant.
+
+Branches: Administración de sucursales.
+
+Warehouses: Control de inventarios y existencias por sucursal.
+
+Products: Catálogo y administración de artículos.
+
+Users: Administración de perfiles y accesos.
+
+Financial: Gestión y control financiero.
+
+Repairs: Órdenes y servicios de reparación.
+
+Sales: Registro y control de transacciones de salida.
+
+Purchases: Administración de adquisiciones y abastecimiento.
+
+Cuentas por Pagar / Cobrar: Control de pasivos y créditos pendientes.
+
+Loans: Gestión de financiamientos y créditos internos.
+
+Cashier Shifts: Apertura, seguimiento y cierre de cajas registradoras.
+
+Comisiones de Empleados: Cálculo de comisiones asociadas al personal.
+
+Tips: Registro y distribución de propinas.
+
+Facturación Electrónica: Soporte integrado para documentos fiscales electrónicos.
+
+2. Categorías, Subcategorías y Planes Comerciales
+La matriz de suscripciones está distribuida por sectores económicos, detallando su abreviatura, nombre del plan y precio en USD (todos configurados con límites estándar de 5 sucursales y 5 almacenes, a excepción de registros base especiales):
+
+Venta General
+
+VG1 (Plan A1) - Vendedor independiente: $10.00
+
+VG2 (Plan A2) - Colmado/MiniMarket: $20.00
+
+VG3 (Plan A3) - Almacén/Distribuidora: $30.00
+
+VG4 (Plan B1) - Ferretería: $30.00
+
+Tiendas
+
+TD1 (Plan B2) - Tienda de muebles: $50.00
+
+TD2 (Plan B3) - Tienda por departamento: $50.00
+
+TD3 (Plan B4) - Electrodomésticos: $50.00
+
+TD4 (Plan B5) - Otros comercios similares: $40.00
+
+Tecnología
+
+TT01 (Plan C1) - Tienda de computadora: $30.00
+
+TT02 (Plan C2) - Tienda de celulares/Electronica: $30.00
+
+TT03 (Plan C3) - Taller de reparación: $30.00
+
+Alimentos y Bebidas
+
+VA01 (Plan D1) - Restaurante: $40.00
+
+VA02 (Plan D2) - Cafetería / comedor: $20.00
+
+Préstamos
+
+PT01 (Plan E1) - Préstamos: $30.00
+
+PT02 (Plan E2) - Financiera: $30.00
+
+PT03 (Plan E3) - Cooperativa: $30.00
+
+Servicios Profesionales
+
+SP01 (Plan F1) - Instaladores: $20.00
+
+SP02 (Plan F2) - Ingenieros y técnicos: $20.00
+
+SP03 (Plan F3) - Abogados: $20.00
+
+SP04 (Plan F4) - Contadores: $20.00
+
+SP05 (Plan F5) - Consultores: $20.00
+
+SP06 (Plan F6) - Otros servicios: $20.00
+
+Seguros
+
+SG01 (Plan G1) - Seguros de vehículos: $40.00
+
+SG02 (Plan G2) - Seguros personales: $40.00
+
+SG03 (Plan G3) - Seguros empresariales: $40.00
+
+Cuidado Personal
+
+CP01 (Plan H1) - Peluquería: $15.00
+
+CP02 (Plan A27) - Salón de belleza: $15.00
+
+CP03 (Plan A28) - Spa: $15.00
+
+CP04 (Plan A29) - Estética/Uñas: $15.00
+
+Salud
+
+SL01 (Plan J1) - Farmacia: $35.00
+
+-------------------------------------------------------------
+
+Al cruzar los 16 módulos actuales del ERP con las subcategorías y tipos de negocios de la matriz comercial, se identifican algunos vacíos funcionales importantes si se quiere dar soporte nativo y especializado a ciertos sectores:
+
+Alimentos y Bebidas (Restaurantes, Cafeterías):
+
+Módulo faltante: Gestión de Mesas y Comandas (Hostelería / POS).
+
+Por qué: Los restaurantes y cafeterías no operan igual que un retail tradicional; requieren control de pisos/mesas, envío de órdenes a cocina (comandas), división de cuentas por comensal y, opcionalmente, control de recetas/recetarios (escandallos) para descontar ingredientes del inventario automáticamente.
+
+Cuidado Personal (Peluquerías, Salones de Belleza, Spas) y Servicios Profesionales:
+
+Módulo faltante: Gestión de Citas y Reservas (Booking / Agenda).
+
+Por qué: Negocios como salones, spas o consultores dependen enteramente de un calendario de citas vinculado al personal y a los recursos (sillas, cabinas). Sin un módulo de agenda, la operación diaria queda coja frente a softwares especializados de citas.
+
+Seguros (Vehículos, Personales, Empresariales):
+
+Módulo faltante: Gestión de Pólizas y Asegurados.
+
+Por qué: Las agencias o corredurías de seguros no venden productos físicos estándar; gestionan contratos, vigencias, renovaciones de pólizas, primas recurrentes y siniestros. El modelo de ventas y productos actual no cubre las particularidades de una correduría de seguros.
+
+Salud (Farmacias):
+
+Funcionalidad/Extensión faltante: Control de Lotes y Fechas de Vencimiento.
+
+Por qué: Aunque el módulo de Almacenes y Productos cubre el stock general, las farmacias exigen por normativa sanitaria un control estricto por número de lote y caducidad para evitar la dispensación de medicamentos vencidos (actualmente solo se cuenta con ProductSerial para números de serie individuales, pero no para lotes masivos farmacéuticos).
+
+
+-----------------------------------------------------------------------
